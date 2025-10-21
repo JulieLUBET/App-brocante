@@ -1,22 +1,23 @@
 /* ======================================
    VARIABLES DE COULEUR
-   Changez ici pour modifier le thème
    ====================================== */
 :root {
-  --color-bg: #fff;           /* fond général */
-  --color-header: #fff;       /* fond header */
-  --color-footer: #fff;       /* fond footer */
-  --color-text: #222;         /* couleur texte */
-  --color-shadow: rgba(0, 0, 0, 0.1); /* ombres */
-  --color-btn-primary: #007bff;   /* bouton principal */
-  --color-btn-primary-hover: #0056b3; 
-  --color-btn-visitor: #6c757d; 
-  --color-btn-visitor-hover: #495057; 
+  --color-bg: #fff;
+  --color-header: #fff;
+  --color-footer: #fff;
+  --color-text: #222;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-btn-primary: #007bff;
+  --color-btn-primary-hover: #0056b3;
+  --color-btn-visitor: #6c757d;
+  --color-btn-visitor-hover: #495057;
   --color-footer-btn-hover: #e0e0e0;
+  --color-border: #ccc;
+  --color-bg-secondary: #f5f5f5;
 }
 
 /* ======================================
-   RESET DE BASE
+   RESET + PARAMETRAGE 
    ====================================== */
 * {
   margin: 0;
@@ -37,8 +38,34 @@ body {
   color: var(--color-text);
 }
 
+/* Titres principaux (h1) */
+h1 {
+  font-weight: bold;     /* gras */
+  color: var(--color-text);
+}
+
+/* Titres secondaires (h2) */
+h2 {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+/* Titres list (h2) */
+h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Paragraphes */
+p {
+  line-height: 1.6;     /* hauteur de ligne pour lisibilité */
+  margin-bottom: 1rem;  /* espace sous chaque paragraphe */
+  color: var(--color-text);
+}
+
 /* ======================================
-   HEADER FIXE EN HAUT
+   HEADER FIXE
    ====================================== */
 .header {
   position: fixed;
@@ -55,12 +82,122 @@ body {
 }
 
 .header a {
-  color: inherit;      /* prend la couleur du texte parent */
-  text-decoration: none; /* enlève le soulignement */
+  color: inherit;
+  text-decoration: none;
 }
 
 /* ======================================
-   Login Section
+   CONTENU SCROLLABLE
+   ====================================== */
+.main-content {
+  margin: 1rem 1rem;
+  flex: 1;
+  overflow-y: auto;
+  padding: 60px 0rem 60px; /* espace pour header/footer */
+  scrollbar-width: none; /* pour Firefox */
+  -ms-overflow-style: none; /* pour Internet Explorer et Edge */
+}
+
+.main-content::-webkit-scrollbar {
+  display: none; /* pour Chrome, Safari et Opera */
+}
+
+/* SECTION */
+.section {
+  display: none; /* toutes les sections masquées par défaut */
+  padding: 1rem 1rem;
+}
+
+/* ======================================
+   MAP SECTION
+   ====================================== */
+.map-content {
+  margin: 0;
+  flex: 1;
+  overflow-y: auto;
+  padding: 60px 0rem 60px; /* espace pour header/footer */
+  scrollbar-width: none; /* pour Firefox */
+  -ms-overflow-style: none; /* pour Internet Explorer et Edge */
+}
+
+.carte-app {
+  width: 100%;
+  height: 100%;
+}
+/* ======================================
+   LISTE BROCANTE SECTION
+   ====================================== */
+#home {
+  padding: 1rem;
+}
+
+.list-container {
+  width: 100%;
+  margin: 0 auto; /* centré horizontalement */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* espace entre chaque item */
+}
+
+.liste-item {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.liste-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* ======================================
+   FOOTER FIXE
+   ====================================== */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--color-footer);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -2px 5px var(--color-shadow);
+}
+
+.footer label {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.footer a {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: background-color 0.2s;
+  border-top: 2px solid transparent; /* pour effet actif */
+}
+
+.footer a:hover {
+  background-color: var(--color-footer-btn-hover);
+}
+
+.footer a.active {
+  border-top: 2px solid var(--color-btn-primary);
+  font-weight: bold;
+}
+
+/* ======================================
+   LOGIN SECTION (pour index.html)
    ====================================== */
 .login-section {
   max-width: 400px;
@@ -78,7 +215,7 @@ body {
 
 .form input {
   padding: 0.8rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   font-size: 1rem;
 }
@@ -105,53 +242,4 @@ body {
 
 .visitor-btn:hover {
   background-color: var(--color-btn-visitor-hover);
-}
-
-/* ======================================
-   CONTENU SCROLLABLE
-   ====================================== */
-.main-content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 70px 1rem 70px; /* espace pour header et footer */
-}
-
-/* ======================================
-   SECTION
-   ====================================== */
-.section {
-  padding: 1rem 0;
-}
-
-.section.hidden {
-  display: none;
-}
-
-/* ======================================
-   FOOTER FIXE EN BAS
-   ====================================== */
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background-color: var(--color-footer);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  box-shadow: 0 -2px 5px var(--color-shadow);
-}
-
-.footer button {
-  flex: 1;
-  padding: 1rem;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.footer button:hover {
-  background-color: var(--color-footer-btn-hover);
 }

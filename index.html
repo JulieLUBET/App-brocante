@@ -1,41 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BrocMap - Connexion</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <!-- Header fixe -->
-    <header class="header">
-      <h1 class="logo">BrocMap</h1>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrocMap - Connexion</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <h1 class="logo">BrocMap</h1>
+  </header>
 
-    <!-- Contenu scrollable -->
-    <main class="main-content">
-      <section class="login-section">
-        <h2>Bienvenue</h2>
-        <p>Connectez-vous ou créez un compte pour commencer.</p>
+  <main class="main-content">
+    <section class="login-section">
+      <h2>Bienvenue</h2>
+      <p>Connectez-vous ou créez un compte pour commencer.</p>
 
-        <!-- Formulaire de connexion -->
-        <form id="login-form" class="form" action="accueil.html">
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Mot de passe" required />
-          <button type="submit" class="btn">Se connecter</button>
-        </form>
+      <form class="form" action="map.html">
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Mot de passe" required>
+        <button type="submit" class="btn">Se connecter</button>
+      </form>
 
-        <p>Pas de compte ? <a href="#" id="signup-link">Créer un compte</a></p>
-        <br /><br />
-        <!-- Bouton visiteur -->
-        <a href="accueil.html" class="btn visitor-btn"
-          >Accéder en tant que visiteur</a
-        >
-      </section>
-    </main>
+      <p>Pas de compte ? <a href="#">Créer un compte</a></p>
+      <br><br>
 
-    <footer class="footer"></footer>
-
-    <script src="script.js"></script>
-  </body>
+      <a href="map.html" class="btn visitor-btn">Accéder en tant que visiteur</a>
+    </section>
+  </main>
+</body>
 </html>
