@@ -15,3 +15,5 @@ var map = L.map('maMap').setView([48.8566, 2.3522], 13);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap contributors'
 }).addTo(map);
+
+// affichage agenda 
