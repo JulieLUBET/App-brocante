@@ -108,6 +108,121 @@ p {
 }
 
 /* ======================================
+   ONBOARDING SECTION
+   ====================================== */
+.onboarding-container,
+.onboarding-container * {
+  box-sizing: border-box;
+}
+
+.onboarding-container img {
+  height: 150px;
+  width: 100%;
+  margin: 32px 0;
+}
+
+.onboarding-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  opacity: 1;
+  pointer-events: none;
+  transition: all 200ms ease;
+}
+
+/* Quand actif : overlay invisible */
+.onboarding-overlay.active {
+  opacity: 0;
+}
+
+.onboarding-container {
+  z-index: 300;
+  position: fixed;
+  font-family: "Roboto", sans-serif;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* affiché par défaut */
+  box-shadow: 0 4px 40px -8px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  transition: all 200ms ease;
+}
+
+/* Quand actif → on cache le module */
+.onboarding-container.active {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.onboarding-container .content {
+  background: #fff;
+  max-width: 300px;
+  padding-top: 24px;
+  overflow: hidden;
+}
+
+.onboarding-container .steps {
+  display: flex;
+  width: 300%;
+  transition: all 400ms ease;
+}
+
+.onboarding-container h3 {
+  margin: 0;
+  font-size: 32px;
+  text-align: center;
+  padding: 0 32px;
+}
+
+.onboarding-container p {
+  line-height: 1.8;
+  padding: 0 32px;
+}
+
+.onboarding-container .next-btn {
+  width: 100%;
+  padding: 18px 32px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background: #b3004e;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.onboarding-container .skip-btn {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #636363;
+  cursor: pointer;
+}
+
+.onboarding-container .dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.onboarding-container .dot {
+  width: 10px;
+  height: 10px;
+  background: #dbdbdb;
+  border-radius: 50%;
+  transition: all 400ms ease;
+}
+
+.onboarding-container .dot.active {
+  background: #b3004e;
+}
+
+/* ======================================
    MAP SECTION
    ====================================== */
 .map-content {

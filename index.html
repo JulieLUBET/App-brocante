@@ -4,14 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BrocMap - Connexion</title>
+
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+
+  <!-- HEADER -->
   <header class="header">
     <h1 class="logo">BrocMap</h1>
   </header>
 
+  <!-- CONTENU PRINCIPAL -->
   <main class="main-content">
+
     <section class="login-section">
       <h2>Bienvenue</h2>
       <p>Connectez-vous ou créez un compte pour commencer.</p>
@@ -23,10 +29,60 @@
       </form>
 
       <p>Pas de compte ? <a href="#">Créer un compte</a></p>
-      <br><br>
 
       <a href="map.html" class="btn visitor-btn">Accéder en tant que visiteur</a>
     </section>
+
+    <!-- OVERLAY -->
+    <div class="onboarding-overlay"></div>
+
+    <!-- ONBOARDING -->
+    <div class="onboarding-container">
+      <div class="content">
+        
+        <span class="skip-btn">Skip</span>
+
+        <div class="dots">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="image">
+              <img src="./images/Carré_gris.jpg" alt="">
+            </div>
+            <h3>Step 1</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+
+          <div class="step">
+            <div class="image">
+              <img src="./images/Carré_gris.jpg" alt="">
+            </div>
+            <h3>Step 2</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+
+          <div class="step">
+            <div class="image">
+              <img src="./images/Carré_gris.jpg" alt="">
+            </div>
+            <h3>Step 3</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+
+        <button class="next-btn">Next</button>
+
+      </div>
+    </div>
+
   </main>
+
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
+
 </body>
 </html>
