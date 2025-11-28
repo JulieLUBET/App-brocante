@@ -29,6 +29,18 @@ html, body {
   height: 100%;
 }
 
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  z-index: 9999;
+}
+
 body {
   font-family: sans-serif;
   display: flex;
@@ -65,26 +77,91 @@ p {
 }
 
 /* ======================================
-   HEADER FIXE
+   MENU BURGER
    ====================================== */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background-color: var(--color-header);
+.burger {
+  z-index: 10000; 
+  position: relative; 
+  width: 30px;
+  height: 22px;
   display: flex;
-  align-items: center;
-  padding: 0 1rem;
-  box-shadow: 0 2px 5px var(--color-shadow);
-  z-index: 10;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
-.header a {
-  color: inherit;
-  text-decoration: none;
+.burger span {
+  display: block;
+  height: 4px;
+  background-color: var(--color-text);
+  border-radius: 5px;
+  transition: 0.3s;
 }
+
+/* Animation du burger en croix */
+.burger.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+
+/* --- MENU PAR DÉFAUT (CACHE) --- */
+.nav-links {
+  position: fixed;
+  top: 0px;
+  right: -66%;
+  width: 66%;
+  background: var(--color-bg);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  padding-top: 60px; 
+  gap: 1rem;
+  box-shadow: -2px 0 5px var(--color-shadow);
+  transition: 0.3s;
+}
+
+/* Quand le menu est ouvert */
+.nav-links.open {
+  left: 0;
+}
+
+/* Liens dans le menu */
+.nav-links a {
+  padding: 0.8rem;
+  padding-left: 0%;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.nav-links a:hover {
+  background-color: var(--color-footer-btn-hover);
+}
+
+/* Desktop : menu normal */
+@media(min-width: 700px) {
+  .burger {
+    display: none;
+  }
+
+  .nav-links {
+    position: static;
+    flex-direction: row;
+    background: none;
+    height: auto;
+    width: auto;
+    box-shadow: none;
+    gap: 2rem;
+  }
+}
+
 
 /* ======================================
    CONTENU SCROLLABLE
@@ -117,7 +194,7 @@ p {
 
 .onboarding-container img {
   height: 150px;
-  width: 100%;
+  width: 300px;
   margin: 32px 0;
 }
 
@@ -171,9 +248,9 @@ p {
 
 .onboarding-container h3 {
   margin: 0;
-  font-size: 32px;
+  font-size: 25px;
   text-align: center;
-  padding: 0 32px;
+  padding: 0 32px 32px 32px;
 }
 
 .onboarding-container p {
@@ -229,7 +306,7 @@ p {
   margin: 0;
   flex: 1;
   overflow-y: auto;
-  padding: 60px 0rem 60px; /* espace pour header/footer */
+  padding: 0; /* espace pour header/footer */
   scrollbar-width: none; /* pour Firefox */
   -ms-overflow-style: none; /* pour Internet Explorer et Edge */
 }
@@ -238,6 +315,175 @@ p {
   width: 100%;
   height: 100%;
 }
+
+.leaflet-control-zoom {
+  display: none !important;
+}
+
+/* ======================================
+   PROFIL SECTION
+   ====================================== */
+
+/* ------- BANNIERE ET PHOTO ------- */
+
+.profile-header {
+  position: relative;
+  width: 100%;
+  height: 20%; 
+  overflow: visible;
+}
+
+.banner {
+  height: 100%; /* prend toute la hauteur du header */
+}
+
+.banner img {
+  width: 100%;
+  height: 100%; 
+  object-fit: cover;
+}
+
+.profile-picture {
+  position: absolute;
+  bottom: -50px; /* moitié de la hauteur de la photo (110px / 2) */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* ------- TEXTE PROFIL ------- */
+.profile-info {
+  margin-top: 70px; /* espace à cause de la photo */
+  text-align: center;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.profile-info p {
+  color: #666;
+  margin-top: 4px;
+}
+
+/* ======== Chiffres et labels ======== */
+.profil-chiffres {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+/* Chaque bloc prend 50% */
+.profil-chiffres > div {
+  flex: 1;
+  text-align: center;
+  padding: 15px 0;
+  position: relative;
+}
+
+/* Séparateur vertical exactement au milieu */
+.profil-chiffres > div:first-child::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background-color: #ccc;
+}
+
+/* Taille des chiffres */
+.profil-chiffres h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.profil-chiffres p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ======== Trouvailles ======== */
+.profil-trouvailles {
+  padding: 16px;
+}
+
+.profil-trouvailles h2 {
+  margin-bottom: 10px;
+}
+
+.images-container {
+  display: flex;
+  justify-content: space-between; /* répartit les images équitablement */
+  gap: 10px; /* espace entre les images */
+  padding: 16px 0;
+}
+
+.profil-trouvailles img {
+  width: 30%;         /* largeur fixe ou en % selon besoin */
+  object-fit: cover;    /* crop si nécessaire */
+  border-radius: 10px;  /* arrondi des coins */
+}
+
+/* ======================================
+   MESSAGES SECTION
+   ====================================== */
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 50px;
+  padding: 16px;
+  overflow-y: auto;
+  max-height: calc(100vh - 60px); /* prend en compte header fixe */
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 0px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.message:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.message-photo img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.message-description h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.message-description p {
+  margin: 2px 0 0 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
 /* ======================================
    LISTE BROCANTE SECTION
    ====================================== */
@@ -372,6 +618,118 @@ p {
 .fc-col-header-cell {
   color: var(--color-text);
   font-weight: bold;
+}
+
+/* ======================================
+   ANNONCE SECTION
+   ====================================== */
+
+/* Annnonce container */
+.annonce {
+  background: #f6f6f6;
+  padding: 16px;
+  border-radius: 12px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Ligne du haut */
+.annonce-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Photo de profil */
+.annonce-pp {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Nom + pseudo */
+.annonce-user {
+  flex-grow: 1;
+  margin-left: 12px;
+}
+
+.annonce-user h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.annonce-pseudo {
+  margin: 2px 0 0 0;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* Description */
+.annonce-description {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* Footer : date + bouton */
+.annonce-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.annonce-date {
+  font-size: 0.85rem;
+  color: #777;
+  margin: 0;
+}
+
+/* Bouton répondre */
+.annonce-repondre {
+  border: none;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+   /* ======================================
+   REGLAGES SECTION
+   ====================================== */
+
+.main-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.liste-réglage {
+  display: flex;
+  flex-direction: column;
+}
+
+.réglage-item {
+  display: flex;
+  justify-content: space-between; /* texte à gauche, flèche à droite */
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #ccc; /* ligne de séparation */
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.réglage-item:last-child {
+  border-bottom: none; /* pas de ligne après le dernier item */
+}
+
+.réglage-item:hover {
+  background-color: #f0f0f0;
+}
+
+.réglage-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: #222;
 }
 
 /* ======================================

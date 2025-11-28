@@ -12,15 +12,31 @@
   </head>
   <body>
     <header class="header">
-      <h1 class="logo"><a href="index.html">BrocMap</a></h1>
+      <div class="burger" id="burgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="nav-links" id="navMenu">
+        <a href="map.html">Map</a>
+        <a href="profil.html">Mon profil</a>
+        <a href="messages.html">Messages</a>
+        <a href="annonces.html">Annonces</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="reglages.html">Règlages</a>
+        <a href="recherche.html">Recherche</a>
+      </nav>
     </header>
 
     <main class="main-content">
       <section id="agenda" class="section">
-        <h2>Agenda des brocantes</h2>
-        <div id="calendar"></div>
         <p>Voici les brocantes à venir :</p>
         <ul class="agenda-list">
+          <li>Samedi 5 octobre – Puces de Saint-Ouen</li>
+          <li>Dimanche 6 octobre – Brocante des quais</li>
+          <li>Vendredi 11 octobre – Brocante du parc</li>
+          <li>Samedi 12 octobre – Brocante du centre-ville</li>
           <li>Samedi 5 octobre – Puces de Saint-Ouen</li>
           <li>Dimanche 6 octobre – Brocante des quais</li>
           <li>Vendredi 11 octobre – Brocante du parc</li>
@@ -29,34 +45,7 @@
       </section>
     </main>
 
-    <footer class="footer">
-      <a href="map.html">Map</a>
-      <a href="liste.html">Liste</a>
-      <a href="agenda.html" class="active">Agenda</a>
-      <a href="param.html">Paramètre</a>
-    </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const calendarEl = document.getElementById('calendar');
-      const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        locale: 'fr',
-        headerToolbar: {
-          left: '',
-          center: 'title',
-          right: ''
-        },
-        events: [
-          { title: 'Puces de Saint-Ouen', start: '2025-10-05' },
-          { title: 'Brocante des quais', start: '2025-10-06' },
-          { title: 'Brocante du parc', start: '2025-10-11' },
-          { title: 'Brocante du centre-ville', start: '2025-10-12' }
-        ]
-      });
-      calendar.render();
-    });
-    </script>
+    <script src="js/burger.js"></script>
   </body>
 </html>

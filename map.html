@@ -14,21 +14,29 @@
   </head>
   <body>
     <header class="header">
-      <h1 class="logo"><a href="index.html">BrocMap</a></h1>
+      <div class="burger" id="burgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="nav-links" id="navMenu">
+        <a href="map.html">Map</a>
+        <a href="profil.html">Mon profil</a>
+        <a href="messages.html">Messages</a>
+        <a href="annonces.html">Annonces</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="reglages.html">Règlages</a>
+        <a href="recherche.html">Recherche</a>
+      </nav>
     </header>
 
     <main class="map-content">
       <div class="carte-app" id="maMap"></div>
     </main>
 
-    <footer class="footer">
-      <a href="map.html" class="active">Map</a>
-      <a href="liste.html">Liste</a>
-      <a href="agenda.html">Agenda</a>
-      <a href="param.html">Paramètre</a>
-    </footer>
-
+    <script src="js/burger.js"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="map.js"></script>
+    <script src="js/map.js"></script>
   </body>
 </html>

@@ -6,6 +6,7 @@ const stepsContainer = document.querySelector(".onboarding-container .steps");
 const nextBtn = document.querySelector(".onboarding-container .next-btn");
 const dots = document.querySelectorAll(".onboarding-container .dot");
 
+
 let stepPosition = 0;
 let currentStep = 0;
 
@@ -24,7 +25,7 @@ const init = () => {
   dots.forEach(dot => dot.classList.remove("active"));
   dots[0].classList.add("active");
 
-  nextBtn.textContent = "Next";
+  nextBtn.textContent = "Suivant";
 };
 
 // Démarrage automatique
@@ -57,7 +58,7 @@ nextBtn.addEventListener("click", () => {
   dots[currentStep].classList.add("active");
 
   // Dernier slide → bouton Finish
-  nextBtn.textContent = currentStep === steps.length - 1 ? "Finish" : "Next";
+  nextBtn.textContent = currentStep === steps.length - 1 ? "fin" : "Suivant";
 });
 
 

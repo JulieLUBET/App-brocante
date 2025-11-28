@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrocMap - Carte</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="burger" id="burgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="nav-links" id="navMenu">
+        <a href="map.html">Map</a>
+        <a href="profil.html">Mon profil</a>
+        <a href="messages.html">Messages</a>
+        <a href="annonces.html">Annonces</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="reglages.html">Règlages</a>
+        <a href="recherche.html">Recherche</a>
+      </nav>
+    </header>
+
+    <div class="profile-header">
+      <div class="banner">
+        <img src="./images/Carré_gris.jpg" alt="Bannière profil" />
+      </div>
+
+      <img
+        src="./images/Carré_gris.jpg"
+        alt="photo de profil"
+        class="profile-picture"
+      />
+    </div>
+
+    <div class="profile-info">
+      <h2>Nom de l'utilisateur</h2>
+      <p>Ville ou description courte</p>
+    </div>
+
+    <div class="profil-chiffres">
+      <div>
+        <h2>23</h2>
+        <p>amis</p>
+      </div>
+      <div>
+        <h2>57</h2>
+        <p>trouvailles</p>
+      </div>
+    </div>
+
+    <div class="profil-trouvailles">
+      <h2>Mes trouvailles</h2>
+      <div class="images-container">
+        <img src="./images/Carré_gris.jpg" alt="img trouvailles" />
+        <img src="./images/Carré_gris.jpg" alt="img trouvailles" />
+        <img src="./images/Carré_gris.jpg" alt="img trouvailles" />
+      </div>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
+
+    <script src="js/burger.js"></script>
+  </body>
+</html>
