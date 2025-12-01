@@ -1,93 +1,116 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrocMap - Connexion</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trône - Connexion</title>
 
-  <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/onboarding_login.css" />
+  </head>
 
-<body>
+  <body>
+    <!-- CONTENU PRINCIPAL -->
+    <main class="main-content">
+      <img src="./images/Vector.png" alt="Logo Trôve" class="logo" />
+      <section class="login-section">
+        <h2>Connexion</h2>
+        <form class="form" action="map.html">
+          <input type="email" class="btn-secondary" placeholder="Adress e-mail" required />
+          <input type="password" class="btn-secondary" placeholder="Mot de passe" required />
+          <button type="submit" class="btn">Se connecter</button>
+        </form>
 
-  <!-- HEADER -->
-  <header class="header">
-    <h1 class="logo">BrocMap</h1>
-  </header>
+        <p>
+          Vous n'avez pas de compte ? <br />
+          <a
+            href="#"
+            style="text-decoration: none; font-weight: bold; color: black"
+            >Inscrivez vous</a
+          >
+        </p>
+      </section>
+      <a href="map.html" class="btn visitor-btn">Continuer en tant qu'invité</a>
 
-  <!-- CONTENU PRINCIPAL -->
-  <main class="main-content">
+      <!-- OVERLAY -->
+      <div class="onboarding-overlay"></div>
 
-    <section class="login-section">
-      <h2>Bienvenue</h2>
-      <p>Connectez-vous ou créez un compte pour commencer.</p>
+      <!-- ONBOARDING -->
+      <div class="onboarding-container">
+        <div class="content">
+          <span class="skip-btn">Skip</span>
 
-      <form class="form" action="map.html">
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Mot de passe" required>
-        <button type="submit" class="btn">Se connecter</button>
-      </form>
+          <div class="steps">
+            <div class="step">
+              <div class="image">
+                <img src="./images/onboarding1.png" alt="" />
+              </div>
+              <h3>Bienvenue sur Trôve !</h3>
+              <p>
+                Inscrivez vous ou connectez vous<br />
+                pour profitez d'une expérience optimale.
+              </p>
+            </div>
 
-      <p>Pas de compte ? <a href="#">Créer un compte</a></p>
+            <div class="step">
+              <div class="image">
+                <img src="./images/onboarding2.png" alt="" />
+              </div>
+              <h3>
+                Trouvez des brocantes <br />
+                autour de chez vous
+              </h3>
+              <p>
+                Toutres vos brocantes préférées regroupées <br />
+                au même endroit.
+              </p>
+            </div>
 
-      <a href="map.html" class="btn visitor-btn">Accéder en tant que visiteur</a>
-    </section>
+            <div class="step">
+              <div class="image">
+                <img src="./images/onboarding3.png" alt="" />
+              </div>
+              <h3>Ajoutez vos amis</h3>
+              <p>
+                Organisez vos sorties brocantes <br />
+                directement dans l'application
+              </p>
+            </div>
 
-    <!-- OVERLAY -->
-    <div class="onboarding-overlay"></div>
+            <div class="step">
+              <div class="image">
+                <img src="./images/onboarding4.png" alt="" />
+              </div>
+              <h3>Partagez vos meilleurs trouvailles</h3>
+              <p>
+                Vous trouvez LA pépite ? <br />
+                Partagez la à rous vos amies !
+              </p>
+            </div>
+          </div>
 
-    <!-- ONBOARDING -->
-    <div class="onboarding-container">
-      <div class="content">
-        
-        <span class="skip-btn">Skip</span>
-
-        <div class="dots">
-          <div class="dot active"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
+          <div class="progress-circle">
+            <svg viewBox="0 0 36 36">
+              <path
+                class="circle-bg"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 
+             a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+              <path
+                class="circle"
+                stroke-dasharray="100"
+                stroke-dashoffset="99"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 
+             a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+            </svg>
+            <span class="arrow">→</span>
+          </div>
         </div>
-
-        <div class="steps">
-          <div class="step">
-            <div class="image">
-              <img src="./images/Carré_gris.jpg" alt="">
-            </div>
-            <h3>Bienvenue</h3>
-          </div>
-
-          <div class="step">
-            <div class="image">
-              <img src="./images/Carré_gris.jpg" alt="">
-            </div>
-            <h3>Des brocantes autour de chez vous</h3>
-          </div>
-
-          <div class="step">
-            <div class="image">
-              <img src="./images/Carré_gris.jpg" alt="">
-            </div>
-            <h3>Ajoutez vos amis</h3>
-          </div>
-
-          <div class="step">
-            <div class="image">
-              <img src="./images/Carré_gris.jpg" alt="">
-            </div>
-            <h3>Partagez vos meilleurs trouvailles</h3>
-          </div>
-        </div>
-
-        <button class="next-btn">Next</button>
-
       </div>
-    </div>
+    </main>
 
-  </main>
-
-  <!-- SCRIPT -->
-  <script src="js/script.js"></script>
-
-</body>
+    <!-- SCRIPT -->
+    <script src="js/script.js"></script>
+  </body>
 </html>

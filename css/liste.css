@@ -1,0 +1,57 @@
+/* ======================================
+   LISTE BROCANTE SECTION
+   ====================================== */
+#home {
+  padding: 1rem;
+}
+
+.list-container {
+  width: 100%;
+  margin: 0 auto; /* centré horizontalement */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* espace entre chaque item */
+}
+
+.liste-item {
+  display: flex;
+  gap: 1rem;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.liste-image {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc; /* couleur de fond temporaire */
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.liste-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.liste-info p {
+  margin: 0.2rem 0;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.tags {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tag {
+  background-color: #d0d0d0;
+  border-radius: 12px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+}

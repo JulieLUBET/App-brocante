@@ -1,65 +1,67 @@
 const onboardingContainer = document.querySelector(".onboarding-container");
 const onboardingOverlay = document.querySelector(".onboarding-overlay");
-const skipBtn = document.querySelector(".onboarding-container .skip-btn");
-const steps = document.querySelectorAll(".onboarding-container .step");
-const stepsContainer = document.querySelector(".onboarding-container .steps");
-const nextBtn = document.querySelector(".onboarding-container .next-btn");
-const dots = document.querySelectorAll(".onboarding-container .dot");
+const skipBtn = document.querySelector(".skip-btn");
+const steps = document.querySelectorAll(".step");
+const stepsContainer = document.querySelector(".steps");
+const nextBtn = document.querySelector(".arrow");
+const circle = document.querySelector(".progress-circle .circle");
 
-
-let stepPosition = 0;
 let currentStep = 0;
 
-const init = () => {
+// Cercle
+const radius = 15.9155;
+const circumference = 2 * Math.PI * radius;
+circle.style.strokeDasharray = circumference;
+circle.style.strokeDashoffset = circumference * 0.99; // 1% visible
 
-  stepsContainer.style.transition = "unset";
+function updateProgressCircle(stepIndex) {
+  const totalSteps = steps.length;
+  const progress = stepIndex / (totalSteps - 1);
+  const offset = circumference * (1 - progress);
+  circle.style.strokeDashoffset = offset;
+}
 
-  // Afficher l'onboarding
+// Initialise slides et cercle
+function init() {
   onboardingContainer.classList.remove("active");
   onboardingOverlay.classList.remove("active");
 
   currentStep = 0;
-  stepPosition = 0;
-  stepsContainer.style.transform = `translateX(0px)`;
 
-  dots.forEach(dot => dot.classList.remove("active"));
-  dots[0].classList.add("active");
+  const stepWidth = stepsContainer.getBoundingClientRect().width;
+  steps.forEach(step => step.style.minWidth = `${stepWidth}px`);
+  stepsContainer.style.transform = "translateX(0)";
 
-  nextBtn.textContent = "Suivant";
-};
+  updateProgressCircle(currentStep);
+}
 
-// Démarrage automatique
 document.addEventListener("DOMContentLoaded", init);
 
-// Bouton Skip
+// Skip
 skipBtn.addEventListener("click", () => {
   onboardingContainer.classList.add("active");
   onboardingOverlay.classList.add("active");
 });
 
-// Bouton Next
+// Flèche Next
 nextBtn.addEventListener("click", () => {
-  stepsContainer.style.transition = "all 400ms ease";
   currentStep++;
-
-  // Fin des steps → fermer l'onboarding
   if (currentStep >= steps.length) {
     onboardingContainer.classList.add("active");
     onboardingOverlay.classList.add("active");
     return;
   }
 
-  // Décalage horizontal
-  stepPosition = steps[0].offsetWidth * currentStep;
-  stepsContainer.style.transform = `translateX(-${stepPosition}px)`;
+  const stepWidth = stepsContainer.getBoundingClientRect().width;
+  stepsContainer.style.transition = "transform 0.4s ease";
+  stepsContainer.style.transform = `translateX(-${stepWidth * currentStep}px)`;
 
-  // Mise à jour des dots
-  dots.forEach(dot => dot.classList.remove("active"));
-  dots[currentStep].classList.add("active");
-
-  // Dernier slide → bouton Finish
-  nextBtn.textContent = currentStep === steps.length - 1 ? "fin" : "Suivant";
+  updateProgressCircle(currentStep);
 });
 
-
-
+// Resize
+window.addEventListener("resize", () => {
+  const stepWidth = stepsContainer.getBoundingClientRect().width;
+  steps.forEach(step => step.style.minWidth = `${stepWidth}px`);
+  stepsContainer.style.transform = `translateX(-${stepWidth * currentStep}px)`;
+});

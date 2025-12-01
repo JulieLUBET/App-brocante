@@ -1,0 +1,37 @@
+/* ======================================
+REGLAGES SECTION
+====================================== */
+
+.main-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.liste-réglage {
+  display: flex;
+  flex-direction: column;
+}
+
+.réglage-item {
+  display: flex;
+  justify-content: space-between; /* texte à gauche, flèche à droite */
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #ccc; /* ligne de séparation */
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.réglage-item:last-child {
+  border-bottom: none; /* pas de ligne après le dernier item */
+}
+
+.réglage-item:hover {
+  background-color: #f0f0f0;
+}
+
+.réglage-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: #222;
+}

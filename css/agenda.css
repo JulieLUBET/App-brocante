@@ -1,0 +1,77 @@
+/* ======================================
+   AGENDA SECTION
+   ====================================== */
+.agenda-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.agenda-list li {
+  background-color: #f5f5f5;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#calendar {
+  max-width: 600px; /* moins large */
+  margin: 1rem auto;
+  background-color: var(--color-bg-secondary);
+  border-radius: 8px;
+  padding: 0.5rem; /* moins de padding */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-family: sans-serif;
+  font-size: 0.85rem; /* réduire taille du texte */
+}
+
+/* Titres du calendrier */
+.fc-toolbar-title {
+  color: var(--color-text);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Boutons FullCalendar */
+.fc-button {
+  background-color: var(--color-btn-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  margin: 0 0.2rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.fc-button:hover {
+  background-color: var(--color-btn-primary-hover);
+}
+
+/* Les jours */
+.fc-daygrid-day-number {
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+/* Les événements */
+.fc-event {
+  background-color: var(--color-btn-primary);
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.8rem;
+}
+
+/* Hover sur événements */
+.fc-event:hover {
+  background-color: var(--color-btn-primary-hover);
+}
+
+/* Lignes du calendrier */
+.fc-col-header-cell {
+  color: var(--color-text);
+  font-weight: bold;
+}

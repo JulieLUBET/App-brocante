@@ -1,0 +1,215 @@
+/*======================================
+  ONBOARDING SECTION
+======================================*/
+.onboarding-container,
+.onboarding-container * {
+  box-sizing: border-box;
+}
+
+.onboarding-overlay {
+  background: var(--color-shadow);
+  position: fixed;
+  inset: 0;
+  opacity: 1;
+  pointer-events: none;
+  transition: all 200ms ease;
+}
+
+.onboarding-overlay.active {
+  opacity: 0;
+}
+
+.onboarding-container {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+  font-family: "Futuru", sans-serif;
+  transition: all 200ms ease;
+}
+
+.onboarding-container.active {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.onboarding-container .content {
+  padding-top: 10%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.onboarding-container .steps {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 20px;
+  flex-direction: row;
+  transition: all 400ms ease;
+  height: auto;
+  align-items: flex-start;
+}
+
+.onboarding-container .step {
+  min-width: 100%;
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 10px;
+  gap: 16px;
+}
+
+.onboarding-container .step .image {
+  height: auto;
+  max-height: 50%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.onboarding-container .step .image img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.onboarding-container h3 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.onboarding-container p {
+  text-align: center;
+  padding: 0 20px;
+  margin-bottom: 16px;
+}
+
+.onboarding-container .skip-btn {
+  position: absolute;
+  right: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.progress-circle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  cursor: pointer;
+}
+
+.progress-circle svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(0);
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 4;
+}
+
+.circle {
+  fill: none;
+  stroke: var(--color-title);
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.7s ease;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--color-title);
+}
+
+/*======================================
+  LOGIN SECTION
+======================================*/
+.logo {
+  display: block;          /* Pour que margin auto fonctionne */
+  width: 50%;              /* prend 50% de la largeur du conteneur */
+  max-width: 300px;        /* optionnel : limite la taille maximale */
+  height: auto;            /* garde les proportions de l'image */
+  margin: 20px auto;       /* centre horizontalement et ajoute un peu d'espace au-dessus et dessous */
+}
+
+.login-section {
+  max-width: 400px;
+  margin-bottom: 100px;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-bottom: 20px;
+}
+
+.form input {
+  padding: 1rem;
+  border: 1px solid var(--color-text);
+  border-radius: 20px;
+  font-size: 1rem;
+  background-color: var(--color-btn-bg);
+  color: var(--color-btn-text);
+}
+
+.form input.btn-secondary {
+  background-color: var(--color-btn-secondary-bg);
+  color: var(--color-btn-secondary-text);
+  border: 1px solid var(--color-text);
+  border-radius: 20px;
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: left; /* ou center si tu veux */
+}
+
+.btn {
+  padding: 1rem 1.2rem;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  cursor: pointer;
+}
+
+.visitor-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  background-color: var(--color-bg);
+  color: var(--color-btn-secondary-text);
+  text-decoration: none;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.8rem 1rem;
+  border-radius: 20px;
+}

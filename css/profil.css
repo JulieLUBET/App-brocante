@@ -1,0 +1,112 @@
+/* ======================================
+   PROFIL SECTION
+   ====================================== */
+
+/* ------- BANNIERE ET PHOTO ------- */
+
+.profile-header {
+  position: relative;
+  width: 100%;
+  height: 20%; 
+  overflow: visible;
+}
+
+.banner {
+  height: 100%; /* prend toute la hauteur du header */
+}
+
+.banner img {
+  width: 100%;
+  height: 100%; 
+  object-fit: cover;
+}
+
+.profile-picture {
+  position: absolute;
+  bottom: -50px; /* moitié de la hauteur de la photo (110px / 2) */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* ------- TEXTE PROFIL ------- */
+.profile-info {
+  margin-top: 70px; /* espace à cause de la photo */
+  text-align: center;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.profile-info p {
+  color: #666;
+  margin-top: 4px;
+}
+
+/* ======== Chiffres et labels ======== */
+.profil-chiffres {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+/* Chaque bloc prend 50% */
+.profil-chiffres > div {
+  flex: 1;
+  text-align: center;
+  padding: 15px 0;
+  position: relative;
+}
+
+/* Séparateur vertical exactement au milieu */
+.profil-chiffres > div:first-child::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background-color: #ccc;
+}
+
+/* Taille des chiffres */
+.profil-chiffres h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.profil-chiffres p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ======== Trouvailles ======== */
+.profil-trouvailles {
+  padding: 16px;
+}
+
+.profil-trouvailles h2 {
+  margin-bottom: 10px;
+}
+
+.images-container {
+  display: flex;
+  justify-content: space-between; /* répartit les images équitablement */
+  gap: 10px; /* espace entre les images */
+  padding: 16px 0;
+}
+
+.profil-trouvailles img {
+  width: 30%;         /* largeur fixe ou en % selon besoin */
+  object-fit: cover;    /* crop si nécessaire */
+  border-radius: 10px;  /* arrondi des coins */
+}
