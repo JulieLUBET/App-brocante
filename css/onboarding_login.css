@@ -95,7 +95,9 @@
 
 .onboarding-container .skip-btn {
   position: absolute;
-  right: 25px;
+  top: 5%;               /* légèrement au-dessus de l'image */
+  left: 50%;              /* centre horizontalement */
+  transform: translateX(-50%); /* ajuste pour que le centre réel soit aligné */
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
