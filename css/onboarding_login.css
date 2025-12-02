@@ -151,27 +151,37 @@
 /*======================================
   LOGIN SECTION
 ======================================*/
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centre horizontalement */
+  justify-content: center; /* centre verticalement */
+  min-height: 100vh;     /* prend toute la hauteur de l'écran */
+  padding: 20px 1rem;    /* padding pour un peu d'espace sur les côtés */
+}
+
 .logo {
-  display: block;          /* Pour que margin auto fonctionne */
-  width: 50%;              /* prend 50% de la largeur du conteneur */
-  max-width: 300px;        /* optionnel : limite la taille maximale */
-  height: auto;            /* garde les proportions de l'image */
-  margin: 20px auto;       /* centre horizontalement et ajoute un peu d'espace au-dessus et dessous */
+  display: block;
+  width: 80%;       /* prend 80% de la largeur de l'écran */
+  max-width: 300px; /* limite la taille max sur grand écran */
+  height: auto;
+  margin-bottom: 30px;  /* espace entre le logo et la login section */
 }
 
 .login-section {
-  max-width: 400px;
-  margin-bottom: 100px;
-  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 400px;  /* limite la largeur de la section login */
   text-align: center;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1rem;
-  padding-bottom: 20px;
 }
 
 .form input {
@@ -179,18 +189,8 @@
   border: 1px solid var(--color-text);
   border-radius: 20px;
   font-size: 1rem;
-  background-color: var(--color-btn-bg);
-  color: var(--color-btn-text);
-}
-
-.form input.btn-secondary {
   background-color: var(--color-btn-secondary-bg);
   color: var(--color-btn-secondary-text);
-  border: 1px solid var(--color-text);
-  border-radius: 20px;
-  padding: 1rem;
-  font-size: 1rem;
-  text-align: left; /* ou center si tu veux */
 }
 
 .btn {
