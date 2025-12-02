@@ -13,6 +13,82 @@
   --color-shadow: rgba(0, 0, 0, 0.1);
 }
 
+/* ===========================
+   FONTS FUTURU
+   =========================== */
+@font-face {
+  font-family: 'Futuru';
+  src: url('../fonts/Futuru-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futuru';
+  src: url('../fonts/Futuru-Extralight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futuru';
+  src: url('../fonts/Futuru-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futuru';
+  src: url('../fonts/Futuru-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futuru';
+  src: url('../fonts/Futuru-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futuru';
+  src: url('../fonts/Futuru-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futuru';
+  src: url('../fonts/Futuru-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futuru';
+  src: url('../fonts/Futuru-Extrabold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futuru';
+  src: url('../fonts/Futuru-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* ===========================
+   FONTS SUPERBUSY ACTIVITY
+   =========================== */
+@font-face {
+  font-family: 'Superbusy Activity';
+  src: url('../fonts/SuperbusyActivity-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* ======================================
    RESET + PARAMETRAGE 
    ====================================== */
