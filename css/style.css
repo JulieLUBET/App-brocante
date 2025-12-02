@@ -184,11 +184,11 @@ a:hover {
 /* Boutons globaux */
 .btn {
   padding: 1rem 1.2rem;
+  border: none;
   border-radius: 20px;
   font-weight: bold;
   font-family: "Futuru", sans-serif;
   cursor: pointer;
-  border: none;
   transition: all 0.2s ease;
   text-align: center;
 }
@@ -231,7 +231,7 @@ a:hover {
 .burger span {
   display: block;
   height: 4px;
-  background-color: var(--color-text);
+  background-color: var(--color-btn-bg);
   border-radius: 5px;
   transition: 0.3s;
 }
@@ -253,7 +253,7 @@ a:hover {
   top: 0px;
   right: -66%;
   width: 66%;
-  background: var(--color-bg);
+  background: #f4cf90;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -275,7 +275,7 @@ a:hover {
   padding-left: 0%;
   border-radius: 8px;
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--color-title);
 }
 
 .nav-links a:hover {

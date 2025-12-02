@@ -50,9 +50,10 @@
 
 .onboarding-container .steps {
   display: flex;
-  width: 100vw;       /* largeur exacte de l'écran */
+  /*width: 100vw; */      /* largeur exacte de l'écran */
   overflow: hidden;
   flex-direction: row;
+  padding-left:100%;
 }
 
 .onboarding-container .step {
@@ -154,7 +155,7 @@
   align-items: center;   /* centre horizontalement */
   justify-content: center; /* centre verticalement */
   min-height: 100vh;     /* prend toute la hauteur de l'écran */
-  padding: 20px 1rem;    /* padding pour un peu d'espace sur les côtés */
+  padding: 0px 1rem;    /* padding pour un peu d'espace sur les côtés */
 }
 
 .logo {

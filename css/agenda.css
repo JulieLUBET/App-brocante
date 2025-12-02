@@ -5,73 +5,98 @@
   list-style: none;
   padding: 0;
   margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.agenda-list li {
-  background-color: #f5f5f5;
-  margin: 0.5rem 0;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* Carte principale : colonne qui commence en haut */
+.agenda-card {
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;      /* empile du haut vers le bas */
+  justify-content: flex-start; /* colle le contenu en haut */
+  align-items: stretch;        /* étire horizontalement les enfants */
+  min-height: 84px;            /* ajuste la hauteur minimale (à adapter) */
+  gap: 50px;
 }
 
-#calendar {
-  max-width: 600px; /* moins large */
-  margin: 1rem auto;
-  background-color: var(--color-bg-secondary);
-  border-radius: 8px;
-  padding: 0.5rem; /* moins de padding */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  font-family: sans-serif;
-  font-size: 0.85rem; /* réduire taille du texte */
+#agenda1 {
+  background-color: #ebeced;
 }
 
-/* Titres du calendrier */
-.fc-toolbar-title {
+#agenda2{
+  background-color: #d10e44;
+}
+#agenda2 .agenda-name, #agenda3 .agenda-name {
+  color: white;
+}
+
+#agenda3 {
+  background-color: #ff5436d8;
+}
+#agenda3 .agenda-time,
+#agenda3 .agenda-location {
+  color: rgb(69, 69, 69);
+}
+
+
+/* Ligne du haut : nom à gauche, heure/date à droite,
+   on aligne les items en haut pour que le nom ne soit pas centré */
+.agenda-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* <-- important : aligne en haut */
+  gap: 12px;
+}
+
+/* titre : fixé en haut */
+.agenda-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-title);
+  line-height: 1.2;
+  margin: 0;
+  align-self: flex-start; /* s'assure qu'il reste collé au haut/gauche */
+}
+
+/* heure/date : à droite, ne force pas le titre à se centrer */
+.agenda-time {
+  font-size: 14px;
   color: var(--color-text);
-  font-weight: bold;
-  font-size: 1.2rem;
+  margin: 0;
+  text-align: right;
+  white-space: nowrap; /* empêche le wrap si tu veux garder sur une ligne */
 }
 
-/* Boutons FullCalendar */
-.fc-button {
-  background-color: var(--color-btn-primary);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 0.3rem 0.6rem;
-  margin: 0 0.2rem;
-  font-size: 0.8rem;
-  cursor: pointer;
+/* Bas de la carte */
+.agenda-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+  flex-wrap: nowrap;
 }
 
-.fc-button:hover {
-  background-color: var(--color-btn-primary-hover);
-}
-
-/* Les jours */
-.fc-daygrid-day-number {
-  font-weight: bold;
+.agenda-location {
+  font-size: 14px;
   color: var(--color-text);
 }
 
-/* Les événements */
-.fc-event {
-  background-color: var(--color-btn-primary);
-  border: none;
-  color: #fff;
-  border-radius: 6px;
-  padding: 0.2rem 0.4rem;
-  font-size: 0.8rem;
+/* avatars superposés */
+.agenda-friends {
+  display: flex;
+  align-items: center;
 }
 
-/* Hover sur événements */
-.fc-event:hover {
-  background-color: var(--color-btn-primary-hover);
-}
-
-/* Lignes du calendrier */
-.fc-col-header-cell {
-  color: var(--color-text);
-  font-weight: bold;
+.agenda-friends img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-left: -8px;
+  object-fit: cover;
 }
