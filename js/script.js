@@ -21,6 +21,11 @@ function updateProgressCircle(stepIndex) {
   circle.style.strokeDashoffset = offset;
 }
 
+// Largeur fiable de l’écran
+function getScreenWidth() {
+  return Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+}
+
 // Initialise slides et cercle
 function init() {
   onboardingContainer.classList.remove("active");
@@ -28,7 +33,7 @@ function init() {
 
   currentStep = 0;
 
-  const stepWidth = window.innerWidth; // largeur de l’écran
+  const stepWidth = getScreenWidth();
   steps.forEach(step => step.style.minWidth = `${stepWidth}px`);
   stepsContainer.style.transform = "translateX(0)";
 
@@ -52,7 +57,7 @@ nextBtn.addEventListener("click", () => {
     return;
   }
 
-  const stepWidth = window.innerWidth; // largeur de l’écran
+  const stepWidth = getScreenWidth();
   stepsContainer.style.transition = "transform 0.4s ease";
   stepsContainer.style.transform = `translateX(-${stepWidth * currentStep}px)`;
 
@@ -61,7 +66,7 @@ nextBtn.addEventListener("click", () => {
 
 // Resize
 window.addEventListener("resize", () => {
-  const stepWidth = window.innerWidth; // largeur de l’écran
+  const stepWidth = getScreenWidth();
   steps.forEach(step => step.style.minWidth = `${stepWidth}px`);
   stepsContainer.style.transition = "none"; // pas d'animation sur resize
   stepsContainer.style.transform = `translateX(-${stepWidth * currentStep}px)`;
