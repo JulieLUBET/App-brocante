@@ -197,23 +197,6 @@ a:hover {
   background-color: var(--color-footer-btn-hover);
 }
 
-/* Desktop : menu normal */
-@media (min-width: 700px) {
-  .burger {
-    display: none;
-  }
-
-  .nav-links {
-    position: static;
-    flex-direction: row;
-    background: none;
-    height: auto;
-    width: auto;
-    box-shadow: none;
-    gap: 2rem;
-  }
-}
-
 /* ======================================
    CONTENU SCROLLABLE
    ====================================== */

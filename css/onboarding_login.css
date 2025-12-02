@@ -70,21 +70,20 @@
   gap: 16px;
 }
 
+/* IMAGE DE L'ONBOARDING */
 .onboarding-container .step .image {
-  height: auto;
-  max-height: 50%;
-  width: 90%;
+  width: 80%;       /* prend 80% de la largeur de l’écran */
+  max-width: none;  /* pas de limite */
+  margin: 0 auto;   /* centré horizontalement */
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  padding: 0 10px;
 }
 
 .onboarding-container .step .image img {
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
+  width: 100%;      /* s’adapte à 80% du parent */
+  height: auto;     /* garde les proportions */
   object-fit: contain;
   display: block;
 }
@@ -109,6 +108,7 @@
   z-index: 10001;
 }
 
+/* CERCLE DE PROGRESSION */
 .progress-circle {
   position: relative;
   width: 100px;
@@ -146,6 +146,7 @@
   font-weight: bold;
   color: var(--color-title);
 }
+
 
 /*======================================
   LOGIN SECTION
