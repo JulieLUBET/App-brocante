@@ -27,11 +27,16 @@ body {
   height: 100%;
 }
 
+/* FORCER TEXTE ET LAYOUT SUR ANDROID CHROME */
 html {
-  -webkit-text-size-adjust: 100%; /* désactive l’ajustement automatique sur iOS et Chrome Android */
+  -webkit-text-size-adjust: 100%; /* désactive zoom automatique texte */
+  text-size-adjust: 100%;         /* standard pour autres navigateurs */
+  width: 100vw;                   /* force largeur à 100% du viewport */
+  overflow-x: hidden;
 }
 
 body {
+  min-width: 100vw;
   font-family: "Futuru", sans-serif;
   font-size: 20px;
   color: var(--color-text);
