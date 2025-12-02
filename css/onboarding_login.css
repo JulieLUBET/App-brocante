@@ -50,35 +50,27 @@
 
 .onboarding-container .steps {
   display: flex;
-  width: 100%;
+  width: 100vw;      /* largeur de l’écran */
   overflow: hidden;
-  margin-top: 20px;
   flex-direction: row;
-  transition: all 400ms ease;
-  height: auto;
-  align-items: flex-start;
 }
 
 .onboarding-container .step {
-  min-width: 100%;
-  flex: 0 0 100%;
+  flex: 0 0 100vw;   /* chaque step prend 100% de l’écran */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 10px;
-  gap: 16px;
 }
+
+
 
 /* IMAGE DE L'ONBOARDING */
 .onboarding-container .step .image {
-  width: 80%;       /* prend 80% de la largeur de l’écran */
-  max-width: none;  /* pas de limite */
-  margin: 0 auto;   /* centré horizontalement */
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 80vw;       /* image prend 80% de la largeur écran */
+  max-width: 80vw;   /* pas plus large que 80% */
+  height: auto;
+  margin: 0 auto;
 }
 
 .onboarding-container .step .image img {
