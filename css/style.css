@@ -90,12 +90,10 @@ a:hover {
   left: 0;
   right: 0;
   height: 60px;
-  background-color: var(--color-bg-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 999;
-  box-shadow: 0 2px 5px var(--color-shadow);
 }
 
 /* Boutons globaux */
@@ -133,14 +131,16 @@ a:hover {
    MENU BURGER
    ====================================== */
 .burger {
-  z-index: 10000;
-  position: relative;
+  position: absolute; 
+  top: 20px;
+  left: 20px;
   width: 30px;
   height: 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  z-index: 10000;
 }
 
 .burger span {
