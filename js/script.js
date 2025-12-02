@@ -21,17 +21,19 @@ function updateProgressCircle(stepIndex) {
   circle.style.strokeDashoffset = offset;
 }
 
+// Met à jour la largeur des slides en fonction de la largeur de l'écran
+function updateStepWidths() {
+  const stepWidth = window.innerWidth; // largeur de l'écran
+  steps.forEach(step => step.style.minWidth = `${stepWidth}px`);
+  stepsContainer.style.transform = `translateX(-${stepWidth * currentStep}px)`;
+}
+
 // Initialise slides et cercle
 function init() {
   onboardingContainer.classList.remove("active");
   onboardingOverlay.classList.remove("active");
-
   currentStep = 0;
-
-  const stepWidth = stepsContainer.getBoundingClientRect().width;
-  steps.forEach(step => step.style.minWidth = `${stepWidth}px`);
-  stepsContainer.style.transform = "translateX(0)";
-
+  updateStepWidths();
   updateProgressCircle(currentStep);
 }
 
@@ -51,17 +53,10 @@ nextBtn.addEventListener("click", () => {
     onboardingOverlay.classList.add("active");
     return;
   }
-
-  const stepWidth = stepsContainer.getBoundingClientRect().width;
+  updateStepWidths();
   stepsContainer.style.transition = "transform 0.4s ease";
-  stepsContainer.style.transform = `translateX(-${stepWidth * currentStep}px)`;
-
   updateProgressCircle(currentStep);
 });
 
 // Resize
-window.addEventListener("resize", () => {
-  const stepWidth = stepsContainer.getBoundingClientRect().width;
-  steps.forEach(step => step.style.minWidth = `${stepWidth}px`);
-  stepsContainer.style.transform = `translateX(-${stepWidth * currentStep}px)`;
-});
+window.addEventListener("resize", updateStepWidths);
