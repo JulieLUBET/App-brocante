@@ -150,12 +150,12 @@
   LOGIN SECTION
 ======================================*/
 .main-content {
+  padding-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;   /* centre horizontalement */
   justify-content: center; /* centre verticalement */
   min-height: 100vh;     /* prend toute la hauteur de l'écran */
-  padding: 0px 1rem;    /* padding pour un peu d'espace sur les côtés */
 }
 
 .logo {
@@ -163,7 +163,7 @@
   width: 80%;       /* prend 80% de la largeur de l'écran */
   max-width: 300px; /* limite la taille max sur grand écran */
   height: auto;
-  margin-bottom: 30px;  /* espace entre le logo et la login section */
+  margin-bottom: 20px;  /* espace entre le logo et la login section */
 }
 
 .login-section {
@@ -184,17 +184,15 @@
 
 .form input {
   padding: 1rem;
-  border: 1px solid var(--color-text);
-  border-radius: 20px;
+  border-radius: 40px;
   font-size: 1rem;
   background-color: var(--color-btn-secondary-bg);
-  color: var(--color-btn-secondary-text);
+  color: var(--color-btn-text);
 }
 
 .btn {
-  padding: 1rem 1.2rem;
   border: none;
-  border-radius: 20px;
+  border-radius: 40px;
   background-color: var(--color-btn-bg);
   color: var(--color-btn-text);
   cursor: pointer;
@@ -210,5 +208,9 @@
   font-size: 1rem;
   text-align: center;
   padding: 0.8rem 1rem;
-  border-radius: 20px;
+}
+
+.social-login {
+  display: flex;
+  justify-content: space-between;
 }
