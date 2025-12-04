@@ -30,13 +30,86 @@
         <a href="reglages.html">Règlages</a>
         <a href="recherche.html">Recherche</a>
       </nav>
+
+      <button id="open-search" class="btn-main">Recherche</button>
     </header>
+
+    <div class="popup-overlay" id="popupOverlay">
+      <div class="popup-box">
+        <h2>
+          Autoriser « app » à <br />
+          accéder à votre position ?
+        </h2>
+        <p>
+          Cette app utilisera votre localisation <br />
+          pour vous informer sur les brocantes <br />
+          et événements les plus proches. Votre <br />
+          localisation sert à identifier ces lieux <br />
+          afin de vous donnez un itinéraire.
+        </p>
+        <div id="popupCloseBtn">
+          <button class="popupCloseBtn">
+            Autoriser lorsque l’app est active
+          </button>
+          <button class="popupCloseBtn">Autoriser une fois</button>
+          <button class="popupCloseBtn">Ne pas autoriser</button>
+        </div>
+      </div>
+    </div>
 
     <main class="map-content">
       <div class="carte-app" id="maMap"></div>
     </main>
 
+    <div class="search-popup-overlay" id="searchPopupOverlay"></div>
+    <div class="search-popup" id="searchPopup">
+      <div class="search-popup-content">
+        <div class="popup-header"></div>
+
+        <h2>Recherche avancée</h2>
+
+        <!-- Recherche à proximité -->
+        <button class="popup-btn search-nearby">
+          🔍 Rechercher à proximité 
+        </button>
+        <br>
+        <!-- Recherche par ville -->
+        <label>Ville :</label>
+        <input type="text" id="search-city" placeholder="Ex : Paris, Lyon..." />
+
+        <!-- Recherche par nom -->
+        <label>Nom :</label>
+        <input type="text" id="search-name" placeholder="Nom de brocante" />
+
+        <!-- Sélection date -->
+        <label>Date :</label>
+        <input type="date" id="search-date" />
+
+        <!-- Sélection période -->
+        <label>Période :</label>
+        <select id="search-period">
+          <option value="">Choisir…</option>
+          <option value="weekend">Ce week-end</option>
+          <option value="week">Cette semaine</option>
+          <option value="month">Ce mois</option>
+        </select>
+
+        <!-- Tags (#) -->
+        <label>Tags :</label>
+        <div class="tags">
+          <span>#puces</span>
+          <span>#vintage</span>
+          <span>#antiquités</span>
+          <span>#alimentaire</span>
+        </div>
+
+        <button class="btn-main" id="apply-filters">Recherche</button>
+      </div>
+    </div>
+
     <script src="js/burger.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/search-popup.js"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="js/map.js"></script>
   </body>

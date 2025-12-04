@@ -1,0 +1,27 @@
+[
+  {
+    "nom": "Marché aux Puces de Saint-Ouen (Porte de Clignancourt)",
+    "coords": [48.9022, 2.3445],
+    "categorie": "Marché aux Puces"
+  },
+  {
+    "nom": "Marché aux Puces de la Porte de Vanves",
+    "coords": [48.8266, 2.3136],
+    "categorie": "Marché aux Puces"
+  },
+  {
+    "nom": "Marché aux Puces de Montreuil",
+    "coords": [48.8631, 2.4196],
+    "categorie": "Marché aux Puces"
+  },
+  {
+    "nom": "Marché d'Aligre",
+    "coords": [48.8492, 2.3808],
+    "categorie": "Marché Alimentaire"
+  },
+  {
+    "nom": "Brocante de la Place de la République",
+    "coords": [48.8670, 2.3630],
+    "categorie": "Brocante"
+  }
+]
