@@ -1,27 +1,57 @@
 [
   {
-    "nom": "Marché aux Puces de Saint-Ouen (Porte de Clignancourt)",
-    "coords": [48.9022, 2.3445],
-    "categorie": "Marché aux Puces"
+    "nom": "Marché aux Puces de Saint-Ouen",
+    "coords": [48.9022,2.3445],
+    "categorie": "Marché aux Puces",
+    "markerImage": "images/broc1.png",
+    "presentationImage": "images/onboarding1.png",
+    "date": "Tous les samedis",
+    "description": "Le plus grand marché aux puces de Paris avec plus de 2000 stands.",
+    "tags": ["#puces","#vintage"]
   },
   {
     "nom": "Marché aux Puces de la Porte de Vanves",
-    "coords": [48.8266, 2.3136],
-    "categorie": "Marché aux Puces"
+    "coords": [48.8266,2.3136],
+    "categorie": "Marché aux Puces",
+    "markerImage": "images/broc1.png",
+    "presentationImage": "images/onboarding1.png"
   },
   {
     "nom": "Marché aux Puces de Montreuil",
-    "coords": [48.8631, 2.4196],
-    "categorie": "Marché aux Puces"
+    "coords": [48.8631,2.4196],
+    "categorie": "Marché aux Puces",
+    "markerImage": "images/broc1.png",
+    "presentationImage": "images/onboarding1.png",
+    "date": "Dimanche et lundi",
+    "description": "Brocantes et objets anciens pour les passionnés.",
+    "tags": ["#puces","#antiquités"]
   },
   {
     "nom": "Marché d'Aligre",
-    "coords": [48.8492, 2.3808],
-    "categorie": "Marché Alimentaire"
+    "coords": [48.8492,2.3808],
+    "categorie": "Marché Alimentaire",
+    "markerImage": "images/broc1.png",
+    "presentationImage": "images/onboarding1.png",
+    "date": "Du mardi au dimanche",
+    "description": "Marché alimentaire avec produits frais et locaux.",
+    "tags": ["#alimentaire","#local"]
   },
   {
     "nom": "Brocante de la Place de la République",
-    "coords": [48.8670, 2.3630],
-    "categorie": "Brocante"
+    "coords": [48.8670,2.3630],
+    "categorie": "Brocante",
+    "markerImage": "images/broc1.png",
+    "presentationImage": "images/onboarding1.png"
+  },
+  {
+    "nom": "Bourse aux jouets",
+    "coords": [48.8770,2.3530],
+    "categorie": "Brocante",
+    "markerImage": "images/broc1.png",
+    "presentationImage": "images/bourse_jouets.png",
+    "lieu": "Paris",
+    "date": "Dimanche 07 Décembre 2025 - 10h à 17h",
+    "description": "La bourse aux jouets de Servon fait son retour!Environ 80 exposants cette année avec buvette, manèges et animations. Envie de faires de bonnes affaires avant les fêtes ? Collectionneur cherchant la perle rare ? Il y en aura pour tous",
+    "tags": ["temporaire", "jouets","enfants", "jeux vidéo" ]
   }
 ]
