@@ -89,6 +89,8 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   cursor: pointer;
   z-index: 1000;
+  background-color: var(--color-btn-2-bg);
+  color: var(--color-btn-2-text);
 }
 
 .search-popup {
@@ -156,4 +158,78 @@
 }
 .search-popup-overlay.active {
   display: block;
+}
+
+/* ======================================
+   AMIS CONNECTÉS SECTION
+   ====================================== */
+
+/* --- CONTENEUR PRINCIPAL --- */
+.friends-panel {
+  position: fixed;
+  bottom: 120px;        /* au-dessus de la navbar */
+  right: 0px;
+  z-index: 9000;
+  display: flex;
+  align-items: flex-end; 
+  gap: 10px;
+}
+
+/* --- BOUTON QUI OUVRE/FERME --- */
+.friends-toggle {
+  background: var(--color-bg);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--color-shadow);
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* --- CONTENU GLISSANT --- */
+.friends-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-bg);
+  padding: 8px 12px;
+  border-radius: 30px;
+  margin-right: 10px;
+  box-shadow: var(--color-shadow);
+
+  transform: translateX(120%);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.35s ease;
+}
+
+/* --- ACTIVE : slide vers la gauche --- */
+.friends-panel.open .friends-content {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- FLECHE → --- */
+.friends-content .arrow {
+  font-size: 20px;
+  color: var(--color-sous-title);
+}
+
+/* --- IMAGES AMIS EN ROND --- */
+.friends-content img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-sous-title);
+}
+
+/* Quand ouvert : changer la flèche du bouton */
+.friends-panel.open .friends-toggle {
+  transform: rotate(180deg);
 }

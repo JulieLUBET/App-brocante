@@ -1,9 +1,13 @@
-const burger = document.getElementById("burgerBtn");
-const navMenu = document.getElementById("navMenu");
+const friendsPanel = document.getElementById("friendsPanel");
+const friendsToggle = document.getElementById("friendsToggle");
 
-if (burger && navMenu) {
-  burger.addEventListener("click", () => {
-    burger.classList.toggle("active");
-    navMenu.classList.toggle("open");
-  });
-}
+friendsToggle.addEventListener("click", () => {
+  friendsPanel.classList.toggle("open");
+
+  // Change flèche ← / →
+  if (friendsPanel.classList.contains("open")) {
+    friendsToggle.textContent = "→";
+  } else {
+    friendsToggle.textContent = "←";
+  }
+});

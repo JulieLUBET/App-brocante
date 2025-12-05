@@ -2,14 +2,21 @@
    VARIABLES DE COULEUR
    ====================================== */
 :root {
-  --color-bg: #ffdc96;
-  --color-bg-secondary: #ff9136;
-  --color-text: #050505;
-  --color-title: #d10e44;
-  --color-btn-bg: #d10e44;
-  --color-btn-text: #050505;
-  --color-btn-secondary-bg: #ff9136;
-  --color-btn-secondary-text: #050505;
+  --color-bg: #fff9e9;
+  
+  --color-title: #225836;
+  --color-sous-title: #f64d14;
+  --color-text: #0b1215;
+  --color-text-secondary: #f1f1f1;
+
+  --color-btn-bg: #225836;
+  --color-btn-text: #bdce57;
+
+  --color-btn-2-bg: #bdce57;
+  --color-btn-2-text: #225836;
+
+  --color-btn-3-bg: #fbabbe;
+
   --color-shadow: rgba(0, 0, 0, 0.1);
 }
 
@@ -167,7 +174,7 @@ a:hover {
 }
 
 /* ======================================
-   HEADER
+   HEADER SECTION
    ====================================== */
 .header {
   position: fixed;
@@ -204,7 +211,7 @@ a:hover {
 }
 
 /* ======================================
-   MAIN
+   MAIN SECTION
    ====================================== */
 .main-content {
   flex: 1;
@@ -212,74 +219,41 @@ a:hover {
   overflow-y: auto;
 }
 
-/* ======================================
-   MENU BURGER
-   ====================================== */
-.burger {
-  position: absolute; 
-  top: 60px;
-  left: 20px;
-  width: 30px;
-  height: 22px;
+/* =============================
+   NAV BAR HORIZONTALE
+============================= */
+
+.navbar {
+  width: 95%;
+  height: 60px;
+  background: var(--color-bg);
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  z-index: 10000;
-}
-
-.burger span {
-  display: block;
-  height: 4px;
-  background-color: var(--color-btn-bg);
-  border-radius: 5px;
-  transition: 0.3s;
-}
-
-/* Animation du burger en croix */
-.burger.active span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
-}
-.burger.active span:nth-child(2) {
-  opacity: 0;
-}
-.burger.active span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
-}
-
-/* --- MENU PAR DÉFAUT (CACHE) --- */
-.nav-links {
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;        /* bords arrondis */
+  padding: 0 20px;
   position: fixed;
-  top: 0px;
-  right: -66%;
-  width: 66%;
-  background: #f4cf90;
-  height: 100%;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Liens */
+.nav-links {
   display: flex;
-  flex-direction: column;
-  padding: 16px;
-  padding-top: 60px;
   gap: 1rem;
-  box-shadow: -2px 0 5px var(--color-shadow);
-  transition: 0.3s;
+  list-style: none;
 }
 
-/* Quand le menu est ouvert */
-.nav-links.open {
-  left: 0;
-}
-
-/* Liens dans le menu */
-.nav-links a {
-  padding: 0.8rem;
-  padding-left: 0%;
-  border-radius: 8px;
+.nav-links li a {
   text-decoration: none;
   color: var(--color-title);
-}
-
-.nav-links a:hover {
-  background-color: var(--color-footer-btn-hover);
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: 0.2s;
 }
 
 /* ======================================

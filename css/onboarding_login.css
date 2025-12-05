@@ -122,7 +122,7 @@
 
 .circle-bg {
   fill: none;
-  stroke: #eee;
+  stroke: var(--color-sous-title);
   stroke-width: 4;
 }
 
@@ -186,8 +186,8 @@
   padding: 1rem;
   border-radius: 40px;
   font-size: 1rem;
-  background-color: var(--color-btn-secondary-bg);
-  color: var(--color-btn-text);
+  background-color: var(--color-btn-2-bg);
+  color: var(--color-text);
 }
 
 .btn {
@@ -203,7 +203,7 @@
   width: 100%;
   margin-top: 1rem;
   background-color: var(--color-bg);
-  color: var(--color-btn-secondary-text);
+  color: var(--color-btn-2-text);
   text-decoration: none;
   font-size: 1rem;
   text-align: center;
