@@ -225,7 +225,7 @@ a:hover {
 
 .navbar {
   width: 95%;
-  height: 60px;
+  height: 80px;
   background: var(--color-bg);
   display: flex;
   align-items: center;
@@ -233,7 +233,7 @@ a:hover {
   border-radius: 50px;        /* bords arrondis */
   padding: 0 20px;
   position: fixed;
-  bottom: 40px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
@@ -243,7 +243,7 @@ a:hover {
 /* Liens */
 .nav-links {
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
   list-style: none;
 }
 
@@ -251,9 +251,35 @@ a:hover {
   text-decoration: none;
   color: var(--color-title);
   font-size: 0.8rem;
-  padding: 8px 12px;
+  padding: 2px 8px;
   border-radius: 6px;
   transition: 0.2s;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links li .nav-icon {
+  width: 24px;   /* taille de l'image */
+  height: 24px;
+  object-fit: contain;
+}
+
+.nav-links li .nav-item {
+  display: flex;
+  flex-direction: column; /* empile image + texte */
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-title);
+  gap: 4px; /* espace entre image et texte */
+  padding: 8px; /* zone cliquable un peu plus grande */
+}
+
+.nav-links li .nav-item img.nav-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 /* ======================================

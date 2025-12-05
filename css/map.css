@@ -77,31 +77,16 @@
    POPUP DE RECHERCHE SECTION
    ====================================== */
 
-.btn-main {
-  position: fixed;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: none;
-  border-radius: 30px;
-  padding: 12px 24px;
-  font-size: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  cursor: pointer;
-  z-index: 1000;
-  background-color: var(--color-btn-2-bg);
-  color: var(--color-btn-2-text);
-}
-
+/* Popup Recherche */
 .search-popup {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   height: 70%;
-  background: #fff;
+  background: var(--color-bg);
   border-radius: 18px 18px 0 0;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+  box-shadow: var(--color-shadow);
   transform: translateY(100%);
   transition: transform 0.35s ease;
   padding: 20px;
@@ -117,17 +102,33 @@
   overflow-y: auto;
 }
 
-.search-popup h2 {
-  margin-top: 0;
-  color: #6366f1;
+.search-popup label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--color-title);
 }
 
-.search-popup input,
-.search-popup select {
-  width: 100%;
+.search-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#btn-geoloc {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--color-btn-2-bg);
+  color: var(--color-btn-2-text);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+#search-city {
+  flex: 1;
   padding: 8px;
-  margin-bottom: 12px;
-  border-radius: 8px;
+  border-radius: 20px;
   border: 1px solid #ddd;
 }
 
@@ -135,14 +136,27 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 18px;
+  margin-top: 8px;
 }
 
 .tags span {
-  background: #eef2ff;
-  color: #6366f1;
+  background-color: var(--color-btn-2-bg);
+  color: var(--color-btn-2-text);
   padding: 6px 12px;
   border-radius: 14px;
+  cursor: pointer;
+}
+
+.btn-main {
+  display: block;
+  width: 40%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--color-btn-2-bg);
+  color: var(--color-btn-2-text);
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -153,12 +167,15 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0,0,0,0.2);
-  z-index: 1999; /* juste en dessous de la popup */
-  display: none; /* caché par défaut */
+  z-index: 1999;
+  display: none;
 }
+
 .search-popup-overlay.active {
   display: block;
 }
+
+
 
 /* ======================================
    AMIS CONNECTÉS SECTION
@@ -168,10 +185,10 @@
 .friends-panel {
   position: fixed;
   bottom: 120px;        /* au-dessus de la navbar */
-  right: 0px;
+  right: 0;             /* collé au bord droit */
   z-index: 9000;
   display: flex;
-  align-items: flex-end; 
+  align-items: center;
   gap: 10px;
 }
 
@@ -188,6 +205,7 @@
   font-size: 20px;
   cursor: pointer;
   user-select: none;
+  z-index: 9100;        /* au-dessus du contenu */
 }
 
 /* --- CONTENU GLISSANT --- */
@@ -197,27 +215,33 @@
   gap: 10px;
   background: var(--color-bg);
   padding: 8px 12px;
-  border-radius: 30px;
-  margin-right: 10px;
+  border-radius: 30px 0 0 30px; /* arrondi gauche seulement */
   box-shadow: var(--color-shadow);
 
-  transform: translateX(120%);
+  transform: translateX(100%);   /* complètement caché à droite */
   opacity: 0;
   pointer-events: none;
-  transition: 0.35s ease;
+  transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
 /* --- ACTIVE : slide vers la gauche --- */
 .friends-panel.open .friends-content {
-  transform: translateX(0);
+  transform: translateX(0);      /* glisse pour être visible */
   opacity: 1;
   pointer-events: auto;
 }
 
 /* --- FLECHE → --- */
-.friends-content .arrow {
+.friends-toggle::after {
+  content: "←";                  /* flèche sur le bouton */
   font-size: 20px;
   color: var(--color-sous-title);
+  transition: transform 0.35s ease;
+}
+
+/* Quand ouvert : changer la flèche du bouton */
+.friends-panel.open .friends-toggle::after {
+  transform: rotate(180deg);     /* pointe vers l’autre sens */
 }
 
 /* --- IMAGES AMIS EN ROND --- */
@@ -227,9 +251,4 @@
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--color-sous-title);
-}
-
-/* Quand ouvert : changer la flèche du bouton */
-.friends-panel.open .friends-toggle {
-  transform: rotate(180deg);
 }
