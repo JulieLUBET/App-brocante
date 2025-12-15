@@ -74,28 +74,34 @@
   top: 10%;
   height: 80%;
   width: 1px;
-  background-color: #ccc;
+  background-color:  var(--color-sous-title);
 }
 
 /* Taille des chiffres */
 .profil-chiffres h2 {
   margin: 0;
   font-size: 1.5rem;
+  color: var(--color-sous-title);
 }
 
 .profil-chiffres p {
   margin: 0;
   font-size: 0.9rem;
-  color: #555;
+  color: var(--color-sous-title);
 }
 
 /* ======== Trouvailles ======== */
 .profil-trouvailles {
-  padding: 16px;
+  margin-left: 20px;
+  margin-top: 30px;
 }
 
 .profil-trouvailles h2 {
   margin-bottom: 10px;
+}
+
+.profil-trouvailles p{
+  margin-right: 20px;
 }
 
 .images-container {
@@ -106,7 +112,7 @@
 }
 
 .profil-trouvailles img {
-  width: 30%;         /* largeur fixe ou en % selon besoin */
+  max-width: 200px;         /* largeur fixe ou en % selon besoin */
   object-fit: cover;    /* crop si nécessaire */
   border-radius: 10px;  /* arrondi des coins */
 }

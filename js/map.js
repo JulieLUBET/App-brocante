@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ${b.date ? `<p> ${b.date}</p>` : ""}
           ${b.description ? `<p>${b.description}</p>` : ""}
           ${b.tags ? `<div class="tags">${b.tags.map(tag => `<span>${tag}</span>`).join("")}</div>` : ""}
-          <button class="btn-main">Voir plus</button>
+          <button class="btn-main">M'y rendre</button>
         `;
 
         brocantePopup.classList.add("open");

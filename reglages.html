@@ -8,75 +8,86 @@
   <link rel="stylesheet" href="css/reglage.css" />
 </head>
 <body>
-  <header class="header">
-      <div class="burger" id="burgerBtn">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <nav class="nav-links" id="navMenu">
-        <a href="map.html">Map</a>
-        <a href="profil.html">Mon profil</a>
-        <a href="messages.html">Messages</a>
-        <a href="annonces.html">Annonces</a>
-        <a href="agenda.html">Agenda</a>
-        <a href="reglages.html">Règlages</a>
-        <a href="recherche.html">Recherche</a>
-      </nav>
-    </header>
-
   <main class="main-content">
     <section>
       <h2>Réglages</h2>
+      <br>
       <div class="liste-réglage">
-        <div class="réglage-item">
+        <div class="réglage-item" id="col1">
           <p>Mon compte</p>
           <p>→</p>
         </div>
-        <div class="réglage-item">
-          <p>Statut du compte</p>
-          <p>→</p>
-        </div>
-        <div class="réglage-item">
+        <div class="réglage-item" id="col1">
           <p>Mot de passe</p>
           <p>→</p>
         </div>
-        <div class="réglage-item">
+        <div class="réglage-item" id="col1">
           <p>Visibilité</p>
           <p>→</p>
         </div>
-        <div class="réglage-item">
+        <br><br>
+        <div class="réglage-item" id="col2">
           <p>Notifications</p>
           <p>→</p>
         </div>
-        <div class="réglage-item">
+        <div class="réglage-item" id="col2">
           <p>Apparence de l'application</p>
           <p>→</p>
         </div>
-        <div class="réglage-item">
-          <p>Mes signalements</p>
-          <p>→</p>
-        </div>
-        <div class="réglage-item">
+        <div class="réglage-item" id="col2">
           <p>Accessibilité</p>
           <p>→</p>
         </div>
-        <div class="réglage-item">
+        <br><br>
+        <div class="réglage-item" id="col3">
           <p>Aide</p>
           <p>→</p>
         </div>
-        <div class="réglage-item">
+        <div class="réglage-item" id="col3">
           <p>A propos</p>
           <p>→</p>
         </div>
-        <div class="réglage-item">
+        <div class="réglage-item" id="col3">
           <p>Supprimer le compte</p>
           <p>→</p>
         </div>
 
       </div>
     </section>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li>
+          <a href="profil.html" class="nav-item">
+            <img src="images/profil.png" alt="Profil" class="nav-icon" />
+            <span>profil</span>
+          </a>
+        </li>
+        <li>
+          <a href="messages.html" class="nav-item">
+            <img src="images/messages.png" alt="Messages" class="nav-icon" />
+            <span>messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="annonces.html" class="nav-item">
+            <img src="images/annonces.png" alt="Annonces" class="nav-icon" />
+            <span>annonces</span>
+          </a>
+        </li>
+        <li>
+          <a href="agenda.html" class="nav-item">
+            <img src="images/agenda.png" alt="Agenda" class="nav-icon" />
+            <span>agenda</span>
+          </a>
+        </li>
+        <li>
+          <a href="reglages.html" class="nav-item">
+            <img src="images/reglages.png" alt="Réglages" class="nav-icon" />
+            <span>réglages</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </main>
   <script src="js/burger.js"></script>
 </body>

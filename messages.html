@@ -14,126 +14,108 @@
     />
   </head>
   <body>
-    <header class="header">
-      <div class="burger" id="burgerBtn">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <nav class="nav-links" id="navMenu">
-        <a href="map.html">Map</a>
-        <a href="profil.html">Mon profil</a>
-        <a href="messages.html">Messages</a>
-        <a href="annonces.html">Annonces</a>
-        <a href="agenda.html">Agenda</a>
-        <a href="reglages.html">Règlages</a>
-        <a href="recherche.html">Recherche</a>
-      </nav>
-    </header>
-
     <div class="messages">
-      <div class="message">
+      <a href="./map.html"><img src="./images/Flèche retour.png" alt="" /></a>
+      <h2>Messages</h2>
+      <a href="./messages_léa.html" class="message">
         <div class="message-photo">
-          <img src="./images/Carré_gris.jpg" alt="pp">
+          <img src="./images/pp2.png" alt="pp" />
         </div>
         <div class="message-description">
-          <h3>Nom de l'utilisateur</h3>
-          <p>Dernier message reçu...</p>
+          <h3>Léa</h3>
+          <p>A samedi :) ·3m</p>
+        </div>
+      </a>
+      <div class="message">
+        <div class="message-photo">
+          <img src="./images/pp3.png" alt="pp" />
+        </div>
+        <div class="message-description">
+          <h3>Jean</h3>
+          <p>Parfait! Cyril sera aussi dans le c... ·3m</p>
         </div>
       </div>
       <div class="message">
         <div class="message-photo">
-          <img src="./images/Carré_gris.jpg" alt="pp">
+          <img src="./images/pp4.png" alt="pp" />
         </div>
         <div class="message-description">
-          <h3>Nom de l'utilisateur</h3>
-          <p>Dernier message reçu...</p>
+          <h3>Cyril</h3>
+          <p>Ok je viens. ·10m</p>
         </div>
       </div>
       <div class="message">
         <div class="message-photo">
-          <img src="./images/Carré_gris.jpg" alt="pp">
+          <img src="./images/pp5.png" alt="pp" />
         </div>
         <div class="message-description">
-          <h3>Nom de l'utilisateur</h3>
-          <p>Dernier message reçu...</p>
+          <h3>Theha</h3>
+          <p>J'ai trouvé ce que je voulais la s... ·30m</p>
         </div>
       </div>
       <div class="message">
         <div class="message-photo">
-          <img src="./images/Carré_gris.jpg" alt="pp">
+          <img src="./images/pp6.png" alt="pp" />
         </div>
         <div class="message-description">
-          <h3>Nom de l'utilisateur</h3>
-          <p>Dernier message reçu...</p>
+          <h3>Elliot</h3>
+          <p>La brocante de Montreuil est mie... ·1h</p>
         </div>
       </div>
       <div class="message">
         <div class="message-photo">
-          <img src="./images/Carré_gris.jpg" alt="pp">
+          <img src="./images/pp7.png" alt="pp" />
         </div>
         <div class="message-description">
-          <h3>Nom de l'utilisateur</h3>
-          <p>Dernier message reçu...</p>
+          <h3>Léa</h3>
+          <p>N'hésite pas à suivre <strong>@deb77</strong> ell... ·3h</p>
         </div>
       </div>
-      <div class="message">
-        <div class="message-photo">
-          <img src="./images/Carré_gris.jpg" alt="pp">
+      <div class="btn_messages">
+        <div class="btn_recherche">
+          <img src="./images/recherche.png" alt="icon recherche" />
+          <p>Rechercher</p>
         </div>
-        <div class="message-description">
-          <h3>Nom de l'utilisateur</h3>
-          <p>Dernier message reçu...</p>
-        </div>
-      </div>
-      <div class="message">
-        <div class="message-photo">
-          <img src="./images/Carré_gris.jpg" alt="pp">
-        </div>
-        <div class="message-description">
-          <h3>Nom de l'utilisateur</h3>
-          <p>Dernier message reçu...</p>
-        </div>
-      </div>
-      <div class="message">
-        <div class="message-photo">
-          <img src="./images/Carré_gris.jpg" alt="pp">
-        </div>
-        <div class="message-description">
-          <h3>Nom de l'utilisateur</h3>
-          <p>Dernier message reçu...</p>
-        </div>
-      </div>
-      <div class="message">
-        <div class="message-photo">
-          <img src="./images/Carré_gris.jpg" alt="pp">
-        </div>
-        <div class="message-description">
-          <h3>Nom de l'utilisateur</h3>
-          <p>Dernier message reçu...</p>
-        </div>
-      </div>
-      <div class="message">
-        <div class="message-photo">
-          <img src="./images/Carré_gris.jpg" alt="pp">
-        </div>
-        <div class="message-description">
-          <h3>Nom de l'utilisateur</h3>
-          <p>Dernier message reçu...</p>
-        </div>
-      </div>
-      <div class="message">
-        <div class="message-photo">
-          <img src="./images/Carré_gris.jpg" alt="pp">
-        </div>
-        <div class="message-description">
-          <h3>Nom de l'utilisateur</h3>
-          <p>Dernier message reçu...</p>
+        <div class="btn_ecrire">
+          <img src="./images/ecrire.png" alt="icon ecrire" />
+          <p>Ecrire...</p>
         </div>
       </div>
     </div>
 
-    <script src="js/burger.js"></script>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li>
+          <a href="profil.html" class="nav-item">
+            <img src="images/profil.png" alt="Profil" class="nav-icon" />
+            <span>profil</span>
+          </a>
+        </li>
+        <li>
+          <a href="messages.html" class="nav-item">
+            <img src="images/messages.png" alt="Messages" class="nav-icon" />
+            <span>messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="annonces.html" class="nav-item">
+            <img src="images/annonces.png" alt="Annonces" class="nav-icon" />
+            <span>annonces</span>
+          </a>
+        </li>
+        <li>
+          <a href="agenda.html" class="nav-item">
+            <img src="images/agenda.png" alt="Agenda" class="nav-icon" />
+            <span>agenda</span>
+          </a>
+        </li>
+        <li>
+          <a href="reglages.html" class="nav-item">
+            <img src="images/reglages.png" alt="Réglages" class="nav-icon" />
+            <span>réglages</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </body>
 </html>

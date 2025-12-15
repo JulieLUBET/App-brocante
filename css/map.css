@@ -16,7 +16,7 @@
 }
 
 .popup-box {
-  background: #ffffff;
+  background: var(--color-btn-3-bg);
   border-radius: 20px;
   width: 80%;
   max-width: 360px;
@@ -43,13 +43,13 @@
   width: 100%;
   border: 1px solid grey;
   padding: 1rem 0.2rem;
-  color: #007AFF;
+  color: var(--color-title);
   border: none;
   border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  background-color: white;
+  background-color: var(--color-btn-3-bg);
 }
 
 /* ======================================

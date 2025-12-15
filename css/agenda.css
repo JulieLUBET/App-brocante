@@ -1,47 +1,81 @@
 /* ======================================
    AGENDA SECTION
    ====================================== */
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background-image: url("../images/fond.png");
+  background-repeat: no-repeat; /* ne se répète pas */
+  background-size: cover; /* s’adapte à l’écran */
+  background-position: center; /* centrée */
+  background-attachment: fixed; /* reste fixe au scroll */
+}
+
+h2 {
+  margin: 0;
+}
+
+.jour {
+  justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
 .agenda-list {
   list-style: none;
   padding: 0;
-  margin: 1rem 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
 }
 
 /* Carte principale : colonne qui commence en haut */
 .agenda-card {
-  border-radius: 12px;
+  border-radius: 30px;
   padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column;      /* empile du haut vers le bas */
+  flex-direction: column; /* empile du haut vers le bas */
   justify-content: flex-start; /* colle le contenu en haut */
-  align-items: stretch;        /* étire horizontalement les enfants */
-  min-height: 84px;            /* ajuste la hauteur minimale (à adapter) */
-  gap: 50px;
+  align-items: stretch; /* étire horizontalement les enfants */
+  min-height: 84px; /* ajuste la hauteur minimale (à adapter) */
+  gap: 70px;
 }
 
 #agenda1 {
-  background-color: #ebeced;
+  background-image: url(../images/agenda1.png);
+  background-repeat: no-repeat; /* ne se répète pas */
+  background-size: cover; /* s’adapte à l’écran */
+  background-position: center; /* centrée */
 }
 
-#agenda2{
-  background-color: #d10e44;
-}
-#agenda2 .agenda-name, #agenda3 .agenda-name {
-  color: white;
+#agenda2 {
+  background-image: url(../images/agenda2.png);
+  background-repeat: no-repeat; /* ne se répète pas */
+  background-size: cover; /* s’adapte à l’écran */
+  background-position: center; /* centrée */
 }
 
 #agenda3 {
-  background-color: #ff5436d8;
-}
-#agenda3 .agenda-time,
-#agenda3 .agenda-location {
-  color: rgb(69, 69, 69);
+  background-image: url(../images/agenda3.png);
+  background-repeat: no-repeat; /* ne se répète pas */
+  background-size: cover; /* s’adapte à l’écran */
+  background-position: center; /* centrée */
 }
 
+#agenda1 .agenda-name,
+#agenda1 .agenda-time,
+#agenda1 .agenda-location,
+#agenda2 .agenda-name,
+#agenda2 .agenda-time,
+#agenda2 .agenda-location,
+#agenda3 .agenda-name,
+#agenda3 .agenda-time,
+#agenda3 .agenda-location {
+  color: white;
+}
 
 /* Ligne du haut : nom à gauche, heure/date à droite,
    on aligne les items en haut pour que le nom ne soit pas centré */
@@ -55,8 +89,7 @@
 /* titre : fixé en haut */
 .agenda-name {
   font-weight: 700;
-  font-size: 16px;
-  color: var(--color-title);
+  font-size: 24px;
   line-height: 1.2;
   margin: 0;
   align-self: flex-start; /* s'assure qu'il reste collé au haut/gauche */
@@ -83,7 +116,6 @@
 
 .agenda-location {
   font-size: 14px;
-  color: var(--color-text);
 }
 
 /* avatars superposés */
@@ -96,7 +128,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 2px solid #fff;
+  border: 2px solid var(--color-sous-title);
   margin-left: -8px;
   object-fit: cover;
 }

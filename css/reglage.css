@@ -1,6 +1,16 @@
 /* ======================================
 REGLAGES SECTION
 ====================================== */
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background-image: url("../images/fond.png");
+  background-repeat: no-repeat; /* ne se répète pas */
+  background-size: cover; /* s’adapte à l’écran */
+  background-position: center; /* centrée */
+  background-attachment: fixed; /* reste fixe au scroll */
+}
 
 .main-content h2 {
   text-align: center;
@@ -17,9 +27,29 @@ REGLAGES SECTION
   justify-content: space-between; /* texte à gauche, flèche à droite */
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #ccc; /* ligne de séparation */
   cursor: pointer;
   transition: background-color 0.2s;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+#col1 {
+  background-color: var(--color-btn-bg);
+}
+#col1 p{
+  color: var(--color-btn-text);
+}
+
+#col2 {
+  background-color: var(--color-sous-title);
+}
+#col2 p{
+  color: var(--color-text-secondary);
+}
+
+#col3 {
+  background-color: var(--color-btn-3-bg);
 }
 
 .réglage-item:last-child {
