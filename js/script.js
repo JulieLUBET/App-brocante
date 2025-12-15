@@ -30,7 +30,7 @@ function init() {
 
   const stepWidth = window.innerWidth; // fixe width à l'écran réel
   steps.forEach(step => step.style.minWidth = `${stepWidth}px`);
-  stepsContainer.style.transform = "translateX(0)";
+  stepsContainer.style.transform = "translateX(100vw)";
 
   updateProgressCircle(currentStep);
 }
@@ -44,18 +44,18 @@ skipBtn.addEventListener("click", () => {
 });
 
 // Flèche Next
-nextBtn.addEventListener("click", () => {
-  currentStep++;
-  if (currentStep >= steps.length) {
+nextBtn.addEventListener("click", () => {  
+  if (currentStep >= steps.length - 1) {
     onboardingContainer.classList.add("active");
     onboardingOverlay.classList.add("active");
     return;
   }
-
+  
   const stepWidth = window.innerWidth;
   stepsContainer.style.transition = "transform 0.4s ease";
   stepsContainer.style.transform = `translateX(-${stepWidth * currentStep}px)`;
-
+  
+  currentStep++;
   updateProgressCircle(currentStep);
 });
 

@@ -53,7 +53,7 @@
   /*width: 100vw; */      /* largeur exacte de l'écran */
   overflow: hidden;
   flex-direction: row;
-  padding-left:100%;
+  padding-left: 100vw;
 }
 
 .onboarding-container .step {
