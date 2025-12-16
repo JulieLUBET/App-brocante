@@ -66,14 +66,16 @@ body {
 
 .btn_messages {
   display: flex;
+  position: fixed;
   gap: 30px;
+  bottom: 120px;
 }
 
 .btn_recherche, .btn_ecrire {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 25px;
+  gap: 15px;
+  padding: 10px 30px 10px 10px;
   background-color: var(--color-btn-2-bg);
   border-radius: 20px;
 }

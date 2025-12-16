@@ -147,6 +147,11 @@
   cursor: pointer;
 }
 
+.tags span.active {
+  background-color: var(--color-sous-title);
+  color: white;
+}
+
 .btn-main {
   display: block;
   width: 40%;

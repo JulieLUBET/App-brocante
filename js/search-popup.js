@@ -15,7 +15,7 @@ searchPopupOverlay.addEventListener("click", () => {
   searchPopupOverlay.classList.remove("active");
 });
 
-// Géolocalisation
+/* Géolocalisation
 btnGeoloc.addEventListener("click", () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -31,4 +31,4 @@ btnGeoloc.addEventListener("click", () => {
   } else {
     alert("La géolocalisation n'est pas supportée par votre navigateur.");
   }
-});
+});*/

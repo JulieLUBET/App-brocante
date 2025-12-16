@@ -23,12 +23,12 @@
 /* ===========================
    FONTS ...
    =========================== */
-@font-face {
+/*@font-face {
   font-family: 'Futuru';
   src: url('../fonts/Futuru-Thin.otf') format('opentype');
   font-weight: 100;
   font-style: normal;
-}
+}*/
 
 /* ======================================
    RESET + PARAMETRAGE 
@@ -177,7 +177,7 @@ a:hover {
 /* Liens */
 .nav-links {
   display: flex;
-  gap: 0.8rem;
+  gap: 0.3rem;
   list-style: none;
 }
 
