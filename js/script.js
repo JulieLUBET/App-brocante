@@ -1,67 +1,153 @@
-const onboardingContainer = document.querySelector(".onboarding-container");
-const onboardingOverlay = document.querySelector(".onboarding-overlay");
-const skipBtn = document.querySelector(".skip-btn");
-const steps = document.querySelectorAll(".step");
-const stepsContainer = document.querySelector(".steps");
-const nextBtn = document.querySelector(".arrow");
-const circle = document.querySelector(".progress-circle .circle");
+document.addEventListener("DOMContentLoaded", () => {
+  const onboardingContainer = document.querySelector(".onboarding-container");
+  const onboardingOverlay = document.querySelector(".onboarding-overlay");
 
-let currentStep = 0;
+  const stepsContainer = document.querySelector(".steps");
+  const steps = document.querySelectorAll(".step");
 
-// Cercle
-const radius = 15.9155;
-const circumference = 2 * Math.PI * radius;
-circle.style.strokeDasharray = circumference;
-circle.style.strokeDashoffset = circumference * 0.99; // 1% visible
+  const dots = document.querySelectorAll(".dot");
+  const replayBtn = document.querySelector(".onboarding-replay");
 
-function updateProgressCircle(stepIndex) {
-  const totalSteps = steps.length;
-  const progress = stepIndex / (totalSteps - 1);
-  const offset = circumference * (1 - progress);
-  circle.style.strokeDashoffset = offset;
-}
+  if (!stepsContainer || steps.length === 0) return;
 
-// Initialise slides et cercle
-function init() {
-  onboardingContainer.classList.remove("active");
-  onboardingOverlay.classList.remove("active");
+  let currentStep = 0;
 
-  currentStep = 0;
-
-  const stepWidth = window.innerWidth; // fixe width à l'écran réel
-  steps.forEach(step => step.style.minWidth = `${stepWidth}px`);
-  stepsContainer.style.transform = "translateX(100vw)";
-
-  updateProgressCircle(currentStep);
-}
-
-document.addEventListener("DOMContentLoaded", init);
-
-// Skip
-skipBtn.addEventListener("click", () => {
-  onboardingContainer.classList.add("active");
-  onboardingOverlay.classList.add("active");
-});
-
-// Flèche Next
-nextBtn.addEventListener("click", () => {  
-  if (currentStep >= steps.length - 1) {
-    onboardingContainer.classList.add("active");
-    onboardingOverlay.classList.add("active");
-    return;
+  function setReplayVisible(isVisible) {
+    if (!replayBtn) return;
+    replayBtn.style.display = isVisible ? "flex" : "none";
   }
-  
-  const stepWidth = window.innerWidth;
-  stepsContainer.style.transition = "transform 0.4s ease";
-  stepsContainer.style.transform = `translateX(-${stepWidth * currentStep}px)`;
-  
-  currentStep++;
-  updateProgressCircle(currentStep);
-});
 
-// Resize
-window.addEventListener("resize", () => {
-  const stepWidth = window.innerWidth;
-  steps.forEach(step => step.style.minWidth = `${stepWidth}px`);
-  stepsContainer.style.transform = `translateX(-${stepWidth * currentStep}px)`;
+  function setActiveDots(stepIndex) {
+    if (!dots || dots.length === 0) return;
+    dots.forEach((d, i) => d.classList.toggle("active", i === stepIndex));
+  }
+
+  function getStepWidth() {
+    return window.innerWidth;
+  }
+
+  function goToStep(stepIndex, animate = true) {
+    const maxIndex = steps.length - 1;
+    currentStep = Math.max(0, Math.min(stepIndex, maxIndex));
+
+    const stepWidth = getStepWidth();
+    stepsContainer.style.transition = animate ? "transform 0.35s ease" : "none";
+    stepsContainer.style.transform = `translateX(-${stepWidth * currentStep}px)`;
+
+    setActiveDots(currentStep);
+  }
+
+  function resizeSteps() {
+    const stepWidth = getStepWidth();
+    steps.forEach((step) => {
+      step.style.minWidth = `${stepWidth}px`;
+    });
+    goToStep(currentStep, false);
+  }
+
+  function openOnboarding() {
+    if (onboardingContainer) onboardingContainer.classList.remove("active");
+    if (onboardingOverlay) onboardingOverlay.classList.remove("active");
+
+    // Cache le bouton pendant l'onboarding
+    setReplayVisible(false);
+
+    currentStep = 0;
+    resizeSteps();
+    goToStep(0, false);
+  }
+
+  function closeOnboarding() {
+    if (onboardingContainer) onboardingContainer.classList.add("active");
+    if (onboardingOverlay) onboardingOverlay.classList.add("active");
+
+    // Affiche le bouton sur le login
+    setReplayVisible(true);
+  }
+
+  function next() {
+    if (currentStep >= steps.length - 1) {
+      closeOnboarding();
+    } else {
+      goToStep(currentStep + 1, true);
+    }
+  }
+
+  // INIT: onboarding visible direct + page 1
+  openOnboarding();
+
+  window.addEventListener("resize", resizeSteps);
+
+  // Bouton relance onboarding (visible uniquement sur login)
+  if (replayBtn) {
+    replayBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openOnboarding();
+    });
+  }
+
+  // Tap n'importe où sur l'onboarding = suivant
+  if (onboardingContainer) {
+    onboardingContainer.addEventListener("click", (e) => {
+      // clique sur dot => pas next
+      if (e.target && e.target.classList && e.target.classList.contains("dot")) return;
+      next();
+    });
+  }
+
+  // Clic sur dot = aller à la page
+  if (dots && dots.length > 0) {
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", (e) => {
+        e.stopPropagation();
+        goToStep(index, true);
+      });
+    });
+  }
+
+  // Swipe mobile (horizontal)
+  let startX = 0;
+  let deltaX = 0;
+  let isDragging = false;
+
+  stepsContainer.addEventListener("touchstart", (e) => {
+    if (!e.touches || e.touches.length !== 1) return;
+    isDragging = true;
+    startX = e.touches[0].clientX;
+    deltaX = 0;
+    stepsContainer.style.transition = "none";
+  });
+
+  stepsContainer.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!isDragging || !e.touches || e.touches.length !== 1) return;
+
+      const currentX = e.touches[0].clientX;
+      deltaX = currentX - startX;
+
+      const stepWidth = getStepWidth();
+      const baseTranslate = -stepWidth * currentStep;
+      stepsContainer.style.transform = `translateX(${baseTranslate + deltaX}px)`;
+
+      e.preventDefault();
+    },
+    { passive: false }
+  );
+
+  stepsContainer.addEventListener("touchend", () => {
+    if (!isDragging) return;
+    isDragging = false;
+
+    const stepWidth = getStepWidth();
+    const threshold = stepWidth * 0.2;
+
+    if (deltaX < -threshold && currentStep < steps.length - 1) {
+      goToStep(currentStep + 1, true);
+    } else if (deltaX > threshold && currentStep > 0) {
+      goToStep(currentStep - 1, true);
+    } else {
+      goToStep(currentStep, true);
+    }
+  });
 });

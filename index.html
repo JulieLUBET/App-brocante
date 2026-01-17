@@ -2,7 +2,10 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
     <title>Trône - Connexion</title>
 
     <link rel="stylesheet" href="css/style.css" />
@@ -10,110 +13,113 @@
   </head>
 
   <body>
-    <!-- CONTENU PRINCIPAL -->
     <main class="main-content">
+      <!-- Bouton pour relancer l'onboarding (DA avec image flèche) -->
+      <button
+        class="onboarding-replay"
+        type="button"
+        aria-label="Relancer l'onboarding"
+      >
+        <img src="./images/fleche_retour.png" alt="" />
+      </button>
+
       <img src="./images/Vector.png" alt="Logo Trôve" class="logo" />
+
       <section class="login-section">
         <h2>Connexion</h2>
+
         <form class="form" action="map.html">
-          <input type="email" class="btn-secondary" placeholder="Adress e-mail" required />
-          <input type="password" class="btn-secondary" placeholder="Mot de passe" required />
+          <input
+            type="email"
+            class="btn-secondary"
+            placeholder="Adresse e-mail"
+            required
+          />
+          <input
+            type="password"
+            class="btn-secondary"
+            placeholder="Mot de passe"
+            required
+          />
           <button type="submit" class="btn">Se connecter</button>
         </form>
 
-        <p style="font-size: 16px;">
+        <p style="font-size: 16px">
           Vous n'avez pas de compte ?
-          <a href="#"  style="text-decoration: none; color: black"
-            >Inscrivez vous</a>
+          <a href="#" style="text-decoration: none; color: black"
+            >Inscrivez vous</a
+          >
         </p>
+
         <div class="social-login">
-          <img src="./images/whattsapp.png" alt="whattsapp">
-          <img src="./images/google.png" alt="google">
-          <img src="./images/instagram.png" alt="instagram">
-          <img src="./images/facebook.png" alt="facebook">
+          <img src="./images/google.png" alt="google" />
+          <img src="./images/apple.png" alt="instagram" />
+          <img src="./images/facebook.png" alt="facebook" />
         </div>
       </section>
+
       <a href="map.html" class="btn visitor-btn">Continuer en tant qu'invité</a>
 
-      <!-- OVERLAY -->
+      <!-- Overlay (facultatif) -->
       <div class="onboarding-overlay"></div>
 
-      <!-- ONBOARDING -->
+      <!-- Onboarding -->
       <div class="onboarding-container">
         <div class="content">
-          <span class="skip-btn">Skip</span>
-
           <div class="steps">
-            <div class="step">
-              <div class="image">
-                <img src="./images/onboarding1.png" alt="" />
+            <!-- STEP 1 -->
+            <div class="step step--logo">
+              <h3>Bienvenue sur</h3>
+
+              <div class="center-logo">
+                <img src="./images/trove.png" alt="Trôve" />
               </div>
-              <h3>Bienvenue sur Trôve !</h3>
-              <p>
-                Inscrivez vous ou connectez vous<br />
-                pour profitez d'une expérience optimale.
-              </p>
             </div>
 
+            <!-- STEP 2 -->
             <div class="step">
-              <div class="image">
-                <img src="./images/onboarding2.png" alt="" />
-              </div>
               <h3>
                 Trouvez des brocantes <br />
                 autour de chez vous
               </h3>
-              <p>
-                Toutres vos brocantes préférées regroupées <br />
-                au même endroit.
-              </p>
+              <div class="image">
+                <img src="./images/onboarding1.png" alt="" />
+              </div>
             </div>
 
+            <!-- STEP 3 -->
             <div class="step">
+              <h3>Ajoutez vos ami·es</h3>
+              <div class="image">
+                <img src="./images/onboarding2.png" alt="" />
+              </div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="step">
+              <h3>
+                Partagez vos meilleures <br />
+                trouvailles !
+              </h3>
               <div class="image">
                 <img src="./images/onboarding3.png" alt="" />
               </div>
-              <h3>Ajoutez vos amis</h3>
-              <p>
-                Organisez vos sorties brocantes <br />
-                directement dans l'application
-              </p>
-            </div>
-
-            <div class="step">
-              <div class="image">
-                <img src="./images/onboarding4.png" alt="" />
-              </div>
-              <h3>Partagez vos meilleurs trouvailles</h3>
-              <p>
-                Vous trouvez LA pépite ? <br />
-                Partagez la à rous vos amies !
-              </p>
             </div>
           </div>
 
-          <div class="progress-circle">
-            <svg viewBox="0 0 36 36">
-              <path
-                class="circle-bg"
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 
-             a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-              <path
-                class="circle"
-                stroke-dasharray="100"
-                stroke-dashoffset="99"
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 
-             a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-            </svg>
-            <span class="arrow">→</span>
+          <!-- Dots -->
+          <div class="onboarding-footer">
+            <div class="dots">
+              <span class="dot active" aria-label="Page 1"></span>
+              <span class="dot" aria-label="Page 2"></span>
+              <span class="dot" aria-label="Page 3"></span>
+              <span class="dot" aria-label="Page 4"></span>
+            </div>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- SCRIPT -->
     <script src="js/script.js"></script>
   </body>
 </html>

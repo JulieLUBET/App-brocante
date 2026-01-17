@@ -1,79 +1,143 @@
 /*======================================
-  ONBOARDING SECTION
+  ONBOARDING (plein écran)
 ======================================*/
 .onboarding-container,
 .onboarding-container * {
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Overlay (facultatif) */
 .onboarding-overlay {
-  background: var(--color-shadow);
+  background: rgba(0, 0, 0, 0.35);
   position: fixed;
   inset: 0;
   opacity: 1;
   pointer-events: none;
   transition: all 200ms ease;
+  z-index: 9999;
 }
 
 .onboarding-overlay.active {
   opacity: 0;
 }
 
+/* Onboarding */
 .onboarding-container {
   position: fixed;
   inset: 0;
   z-index: 10000;
-  background: var(--color-bg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 20px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   font-family: "Futuru", sans-serif;
   transition: all 200ms ease;
 }
 
+/* active = caché (retour login) */
 .onboarding-container.active {
   opacity: 0;
   pointer-events: none;
 }
 
 .onboarding-container .content {
-  padding-top: 10%;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
   overflow: hidden;
 }
 
 .onboarding-container .steps {
   display: flex;
-  /*width: 100vw; */      /* largeur exacte de l'écran */
-  overflow: hidden;
-  flex-direction: row;
-  padding-left: 100vw;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
 }
 
 .onboarding-container .step {
-  flex: 0 0 100vw;    /* chaque step prend 100% de l’écran */
+  flex: 0 0 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 10px;
-  gap: 16px;
+  padding: 70px 24px 120px;
+  gap: 18px;
 }
 
-/* IMAGE DE L'ONBOARDING */
-.onboarding-container .step .image {
-  width: 80vw;        /* image prend 80% de l’écran */
-  max-width: 80vw;
-  margin: 0 auto;
+/* Couleurs par écran */
+.onboarding-container .step:nth-child(1) {
+  background: #1f5c43;
+}
+.onboarding-container .step:nth-child(2) {
+  background: #c9d65b;
+}
+.onboarding-container .step:nth-child(3) {
+  background: #f6a7c6;
+}
+.onboarding-container .step:nth-child(4) {
+  background: #ff4d12;
+}
+
+/* Titres: très grand + très gras */
+.onboarding-container .step h3 {
+  font-size: 50px;
+  line-height: 0.95;
+  margin: 0;
+  text-align: left;
+  color: #fff;
+
+  font-weight: 900;
+  letter-spacing: -0.5px;
+
+  -webkit-text-stroke: 0.4px rgba(0, 0, 0, 0.08);
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.06),
+    0 2px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* Pages claires: texte foncé */
+.onboarding-container .step:nth-child(2) h3,
+.onboarding-container .step:nth-child(3) h3 {
+  color: #0b3b2f;
+  -webkit-text-stroke: 0.4px rgba(0, 0, 0, 0.06);
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.05),
+    0 2px 0 rgba(0, 0, 0, 0.03);
+}
+
+/* STEP 1: logo au centre */
+.step--logo {
+  justify-content: flex-start;
+}
+
+.center-logo {
+  margin: auto 0;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.center-logo img {
+  width: 85vw;
+  max-width: 520px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Steps 2-4: image en bas, un peu remontée */
+.onboarding-container .step .image {
+  margin-top: auto;
+  margin-bottom: 32px; /* remonte l'image */
+  width: 90vw;
+  max-width: 420px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
 }
 
 .onboarding-container .step .image img {
@@ -83,92 +147,84 @@
   display: block;
 }
 
-.onboarding-container h3 {
-  text-align: center;
-  margin: 10px 0;
-}
-
-.onboarding-container p {
-  text-align: center;
-  padding: 0 20px;
-  margin-bottom: 16px;
-}
-
-.onboarding-container .skip-btn {
-  position: absolute;
-  top: 5%;               /* légèrement au-dessus de l'image */
-  left: 50%;              /* centre horizontalement */
-  transform: translateX(-50%); /* ajuste pour que le centre réel soit aligné */
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
+/* Dots */
+.onboarding-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 10001;
 }
 
-/* CERCLE DE PROGRESSION */
-.progress-circle {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  margin: 20px auto;
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
   cursor: pointer;
 }
 
-.progress-circle svg {
-  width: 100%;
-  height: 100%;
-  transform: rotate(0);
+.dot.active {
+  background: rgba(255, 255, 255, 1);
 }
 
-.circle-bg {
-  fill: none;
-  stroke: var(--color-sous-title);
-  stroke-width: 4;
+/* Bouton relance onboarding (DA flèche) */
+.onboarding-replay {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: none;
+  background: #f6a7c6;
+  padding: 0;
+  cursor: pointer;
+  z-index: 20000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.circle {
-  fill: none;
-  stroke: var(--color-title);
-  stroke-width: 4;
-  stroke-linecap: round;
-  transition: stroke-dasharray 0.7s ease;
+.onboarding-replay img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
 }
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 28px;
-  font-weight: bold;
-  color: var(--color-title);
-}
-
-
 
 /*======================================
-  LOGIN SECTION
+  LOGIN
 ======================================*/
 .main-content {
   padding-top: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;   /* centre horizontalement */
-  justify-content: center; /* centre verticalement */
-  min-height: 100vh;     /* prend toute la hauteur de l'écran */
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .logo {
   display: block;
-  width: 80%;       /* prend 80% de la largeur de l'écran */
-  max-width: 300px; /* limite la taille max sur grand écran */
+  width: 80%;
+  max-width: 300px;
   height: auto;
-  margin-bottom: 20px;  /* espace entre le logo et la login section */
+  margin-bottom: 20px;
 }
 
 .login-section {
   width: 100%;
-  max-width: 400px;  /* limite la largeur de la section login */
+  max-width: 400px;
   text-align: center;
   padding: 2rem 1rem;
   display: flex;
@@ -179,22 +235,42 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 14px;
+  width: 100%;
 }
 
+/* Champs comme la maquette */
 .form input {
-  padding: 1rem;
-  border-radius: 40px;
-  font-size: 1rem;
-  background-color: var(--color-btn-3-bg);
-  color: var(--color-text);
+  width: 100%;
+  height: 54px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(0, 0, 0, 0.35);
+  background: #f3a8bf;
+  color: #111;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
 }
 
+.form input::placeholder {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.form input:focus {
+  border-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Bouton connexion */
 .btn {
+  width: 100%;
+  height: 54px;
+  border-radius: 999px;
   border: none;
-  border-radius: 40px;
-  background-color: var(--color-btn-bg);
-  color: var(--color-btn-text);
+  background: #1f5c43;
+  color: #d8d45a;
+  font-size: 16px;
+  font-weight: 800;
   cursor: pointer;
 }
 
