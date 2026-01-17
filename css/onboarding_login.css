@@ -245,10 +245,11 @@ body {
   height: 54px;
   padding: 0 18px;
   border-radius: 999px;
-  border: 1.5px solid rgba(0, 0, 0, 0.35);
+  border: none;
   background: #f3a8bf;
   color: #111;
   font-size: 16px;
+  font-weight: 600;
   outline: none;
   box-sizing: border-box;
 }
@@ -288,5 +289,9 @@ body {
 
 .social-login {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 6px;
 }
+

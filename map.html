@@ -18,25 +18,50 @@
       <button id="open-search" class="btn-main">Recherche</button>
     </header>
 
-    <div class="popup-overlay" id="popupOverlay">
-      <div class="popup-box">
-        <h2>
-          Autoriser « app » à <br />
-          accéder à votre position ?
-        </h2>
-        <p>
-          Cette app utilisera votre localisation <br />
-          pour vous informer sur les brocantes <br />
-          et événements les plus proches. Votre <br />
-          localisation sert à identifier ces lieux <br />
-          afin de vous donnez un itinéraire.
-        </p>
-        <div id="popupCloseBtn">
-          <button class="popupCloseBtn">
+    <!-- POPUP AUTORISATION -->
+    <div
+      class="popup-overlay"
+      id="popupOverlay"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="popup-box popup-box--ios">
+        <div class="popup-top popup-top--stack">
+          <div class="popup-appicon" aria-hidden="true">
+            <img src="./images/AppIcon.png" alt="" />
+          </div>
+
+          <div class="popup-text">
+            <h2>Autoriser “Trôve” à utiliser votre position ?</h2>
+            <p>
+              Votre position est utilisée pour indiquer votre position sur le
+              plan, obtenir des itinéraires et des estimations de temps de
+              trajet, ainsi que pour améliorer les résultats de recherche.
+            </p>
+          </div>
+        </div>
+
+        <!-- Aperçu carte (ton image Fields.png) -->
+        <div class="popup-mappreview">
+          <img src="./images/Fields.png" alt="" />
+        </div>
+
+        <div class="popup-actions popup-actions--ios">
+          <button class="popup-pill" type="button" data-loc-action="once">
+            Autoriser une fois
+          </button>
+
+          <button class="popup-pill" type="button" data-loc-action="active">
             Autoriser lorsque l’app est active
           </button>
-          <button class="popupCloseBtn">Autoriser une fois</button>
-          <button class="popupCloseBtn">Ne pas autoriser</button>
+
+          <button
+            class="popup-pill popup-pill--danger"
+            type="button"
+            data-loc-action="deny"
+          >
+            Ne pas autoriser
+          </button>
         </div>
       </div>
     </div>
@@ -46,36 +71,40 @@
     </main>
 
     <!-- OVERLAY + BOTTOM SHEET BROCANTE -->
-<div class="broc-sheet-overlay" id="brocanteSheetOverlay"></div>
+    <div class="broc-sheet-overlay" id="brocanteSheetOverlay"></div>
 
-<section class="broc-sheet" id="brocanteSheet" aria-hidden="true">
-  <div class="broc-handle" aria-hidden="true"></div>
+    <section class="broc-sheet" id="brocanteSheet" aria-hidden="true">
+      <div class="broc-handle" aria-hidden="true"></div>
 
-  <div class="broc-media">
-    <img id="brocSheetImage" alt="" />
-    <button class="broc-like" id="brocLikeBtn" type="button" aria-label="Favori">
-      ♡
-    </button>
+      <div class="broc-media">
+        <img id="brocSheetImage" alt="" />
+        <button
+          class="broc-like"
+          id="brocLikeBtn"
+          type="button"
+          aria-label="Favori"
+        >
+          ♡
+        </button>
 
-    <div class="broc-live" id="brocLiveBadge">
-      Flux en direct <span class="broc-play" aria-hidden="true">▶</span>
-    </div>
-  </div>
+        <div class="broc-live" id="brocLiveBadge">
+          Flux en direct <span class="broc-play" aria-hidden="true">▶</span>
+        </div>
+      </div>
 
-  <div class="broc-body" id="brocantePopupContent">
-    <!-- Contenu dynamique JS -->
-  </div>
+      <div class="broc-body" id="brocantePopupContent">
+        <!-- Contenu dynamique JS -->
+      </div>
 
-  <div class="broc-actions">
-    <button class="broc-btn broc-btn-share" id="brocShareBtn" type="button">
-      Partager <span class="broc-icon" aria-hidden="true"></span>
-    </button>
-    <button class="broc-btn broc-btn-go" id="brocGoBtn" type="button">
-      M’y rendre <span class="broc-icon" aria-hidden="true"></span>
-    </button>
-  </div>
-</section>
-
+      <div class="broc-actions">
+        <button class="broc-btn broc-btn-share" id="brocShareBtn" type="button">
+          Partager <span class="broc-icon" aria-hidden="true"></span>
+        </button>
+        <button class="broc-btn broc-btn-go" id="brocGoBtn" type="button">
+          M’y rendre <span class="broc-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
 
     <div class="search-popup-overlay" id="searchPopupOverlay"></div>
     <div class="search-popup" id="searchPopup">
@@ -98,35 +127,35 @@
         <!-- Quoi ? -->
         <label>Quoi ?</label>
         <div class="tags">
-          <span class="tag" data-type="periode" data-value="permanente">permanente</span>
-          <span class="tag" data-type="periode" data-value="temporaire">temporaire</span>
+          <span class="tag" data-type="periode" data-value="permanente"
+            >permanente</span
+          >
+          <span class="tag" data-type="periode" data-value="temporaire"
+            >temporaire</span
+          >
         </div>
 
         <div class="tags">
-          <span class="tag" data-type="categorie" data-value="Marché aux Puces">Marchés aux Puces</span>
-          <span class="tag" data-type="categorie" data-value="Brocante">Brocantes</span>
+          <span class="tag" data-type="categorie" data-value="Marché aux Puces"
+            >Marchés aux Puces</span
+          >
+          <span class="tag" data-type="categorie" data-value="Brocante"
+            >Brocantes</span
+          >
         </div>
 
         <div class="tags">
           <span class="tag" data-type="tag" data-value="puces">puces</span>
           <span class="tag" data-type="tag" data-value="vintage">vintage</span>
-          <span class="tag" data-type="tag" data-value="antiquités">antiquités</span>
-          <span class="tag" data-type="tag" data-value="alimentaire">alimentaire</span>
+          <span class="tag" data-type="tag" data-value="antiquités"
+            >antiquités</span
+          >
+          <span class="tag" data-type="tag" data-value="alimentaire"
+            >alimentaire</span
+          >
         </div>
       </div>
     </div>
-
-    <!-- <div class="friends-panel" id="friendsPanel">
-      <div class="friends-toggle" id="friendsToggle">←</div>
-
-      <div class="friends-content">
-        <span class="arrow"></span>
-        <img src="./images/Carré_gris.jpg" alt="" />
-        <img src="./images/Carré_gris.jpg" alt="" />
-        <img src="./images/Carré_gris.jpg" alt="" />
-        <img src="./images/Carré_gris.jpg" alt="" />
-      </div>
-    </div> -->
 
     <nav class="navbar">
       <ul class="nav-links">
