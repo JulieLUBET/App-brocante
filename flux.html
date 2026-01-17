@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrocMap - Flux</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/flux.css" />
+</head>
+
+<body class="flux-page">
+  <a href="./map.html"><img src="./images/Flèche retour.png" alt="" /></a>
+  <div class="flux-title-zone">
+      <div class="flux-tabs" role="tablist" aria-label="Flux">
+        <div class="flux-direct">
+            <div class="flux-location" id="fluxLocation">Seine-Saint-Denis</div>
+            <button class="flux-tab active" data-tab="live" role="tab" aria-selected="true">En direct</button>
+        </div>
+        <button class="flux-tab" data-tab="following" role="tab" aria-selected="false">Suivi·es</button>
+      </div>
+    </div>
+
+  <!-- Content -->
+  <main class="flux-content">
+    <section class="grid" id="fluxGrid" aria-live="polite"></section>
+  </main>
+
+  <!-- Navbar (reprend ton modèle existant) -->
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="profil.html" class="nav-item"><img src="images/profil.png" alt="Profil" class="nav-icon" /><span>profil</span></a></li>
+      <li><a href="messages.html" class="nav-item"><img src="images/messages.png" alt="Messages" class="nav-icon" /><span>messages</span></a></li>
+      <li><a href="annonces.html" class="nav-item"><img src="images/annonces.png" alt="Annonces" class="nav-icon" /><span>annonces</span></a></li>
+      <li><a href="agenda.html" class="nav-item"><img src="images/agenda.png" alt="Agenda" class="nav-icon" /><span>agenda</span></a></li>
+      <li><a href="reglages.html" class="nav-item"><img src="images/reglages.png" alt="Réglages" class="nav-icon" /><span>réglages</span></a></li>
+    </ul>
+  </nav>
+
+  <script src="js/flux.js"></script>
+</body>
+</html>

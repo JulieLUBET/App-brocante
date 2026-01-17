@@ -14,9 +14,34 @@ document.addEventListener("DOMContentLoaded", () => {
   let brocantes = [];
   let marqueursBrocantes = [];
 
-  const brocantePopup = document.getElementById("brocantePopup");
-  const brocantePopupOverlay = document.getElementById("brocantePopupOverlay");
+  const brocanteSheet = document.getElementById("brocanteSheet");
+  const brocanteSheetOverlay = document.getElementById("brocanteSheetOverlay");
   const brocantePopupContent = document.getElementById("brocantePopupContent");
+
+  const brocSheetImage = document.getElementById("brocSheetImage");
+  const brocLiveBadge = document.getElementById("brocLiveBadge");
+  const brocLikeBtn = document.getElementById("brocLikeBtn");
+
+  const brocGoBtn = document.getElementById("brocGoBtn");
+  const brocShareBtn = document.getElementById("brocShareBtn");
+
+  brocLiveBadge.addEventListener("click", () => {
+    window.location.href = "flux.html";
+  });
+
+  function openBrocSheet() {
+    brocanteSheet.classList.add("open");
+    brocanteSheetOverlay.classList.add("active");
+    brocanteSheet.setAttribute("aria-hidden", "false");
+  }
+
+  function closeBrocSheet() {
+    brocanteSheet.classList.remove("open");
+    brocanteSheetOverlay.classList.remove("active");
+    brocanteSheet.setAttribute("aria-hidden", "true");
+  }
+
+  brocanteSheetOverlay.addEventListener("click", closeBrocSheet);
 
   /* ============================
      FILTRES
@@ -25,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     categorie: null, // Brocante / Marché aux Puces
     periode: null, // permanente / temporaire
     tags: [], // puces, vintage, etc.
-    recherche: "" // Recherche par texte
+    recherche: "", // Recherche par texte
   };
 
   /* ============================
@@ -89,8 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================= */
     if (filtres.recherche) {
       resultat = resultat.filter((b) => {
-        const texte =
-          `${b.nom || ""} ${b.lieu || ""} ${b.description || ""}`.toLowerCase();
+        const texte = `${b.nom || ""} ${b.lieu || ""} ${
+          b.description || ""
+        }`.toLowerCase();
 
         return texte.includes(filtres.recherche);
       });
@@ -106,31 +132,80 @@ document.addEventListener("DOMContentLoaded", () => {
       }).addTo(map);
 
       marker.on("click", () => {
+        // 1) Image
+        if (b.presentationImage) {
+          brocSheetImage.src = b.presentationImage;
+          brocSheetImage.alt = b.nom || "Événement";
+        } else {
+          brocSheetImage.removeAttribute("src");
+          brocSheetImage.alt = "";
+        }
+
+        // 2) Badge live (optionnel)
+        // Si tu veux gérer par JSON: b.live === true/false
+        if (b.live === false) {
+          brocLiveBadge.style.display = "none";
+        } else {
+          brocLiveBadge.style.display = "inline-flex";
+        }
+
+        // 3) Contenu
         brocantePopupContent.innerHTML = `
-          ${b.presentationImage ? `<img src="${b.presentationImage}" alt="${b.nom}" style="width:100%; border-radius:15px; margin-bottom:10px;">` : ""}
-          <h3>${b.nom}</h3>
-          ${b.lieu ? `<p> ${b.lieu}</p>` : ""}
-          ${b.date ? `<p> ${b.date}</p>` : ""}
-          ${b.description ? `<p>${b.description}</p>` : ""}
-          ${b.tags ? `<div class="tags">${b.tags.map(tag => `<span>${tag}</span>`).join("")}</div>` : ""}
-          <button class="btn-main">M'y rendre</button>
-        `;
-        
-        brocantePopup.classList.add("open");
-        brocantePopupOverlay.classList.add("active");
+    <h3 class="broc-title">${b.nom || ""}</h3>
+    <p class="broc-sub">${b.lieu || ""}</p>
+    ${b.date ? `<p class="broc-date">${b.date}</p>` : ""}
+    ${b.description ? `<p class="broc-desc">${b.description}</p>` : ""}
+    ${
+      b.tags && b.tags.length
+        ? `<div class="broc-tags">${b.tags
+            .map((t) => `<span class="broc-tag">${t}</span>`)
+            .join("")}</div>`
+        : ""
+    }
+  `;
+
+        // 4) Like (simple UI)
+        brocLikeBtn.classList.remove("active");
+        brocLikeBtn.textContent = "♡";
+        brocLikeBtn.onclick = () => {
+          const active = brocLikeBtn.classList.toggle("active");
+          brocLikeBtn.textContent = active ? "♥" : "♡";
+        };
+
+        // 5) Bouton "M'y rendre"
+        brocGoBtn.onclick = () => {
+          if (b.coords && b.coords.length === 2) {
+            const [lat, lng] = b.coords;
+            window.open(
+              `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`,
+              "_blank"
+            );
+          }
+        };
+
+        // 6) Bouton "Partager"
+        brocShareBtn.onclick = async () => {
+          const txt = `${b.nom || ""}\n${b.lieu || ""}\n${b.date || ""}`;
+          if (navigator.share) {
+            try {
+              await navigator.share({ title: b.nom || "Événement", text: txt });
+            } catch (e) {}
+          } else {
+            try {
+              await navigator.clipboard.writeText(txt);
+              alert("Infos copiées dans le presse-papier.");
+            } catch (e) {
+              alert(txt);
+            }
+          }
+        };
+
+        openBrocSheet();
       });
 
       marqueursBrocantes.push(marker);
     });
   }
-
-  /* ============================
-     POPUP BROCANTE
-     ============================ */
-  brocantePopupOverlay.addEventListener("click", () => {
-    brocantePopup.classList.remove("open");
-    brocantePopupOverlay.classList.remove("active");
-  });
 
   /* ============================
      TAGS CLIQUABLES (RECHERCHE)

@@ -45,13 +45,37 @@
       <div class="carte-app" id="maMap"></div>
     </main>
 
-    <div class="search-popup-overlay" id="brocantePopupOverlay"></div>
+    <!-- OVERLAY + BOTTOM SHEET BROCANTE -->
+<div class="broc-sheet-overlay" id="brocanteSheetOverlay"></div>
 
-    <div class="search-popup" id="brocantePopup">
-      <div class="search-popup-content" id="brocantePopupContent">
-        <!-- Contenu dynamique inséré par JS -->
-      </div>
+<section class="broc-sheet" id="brocanteSheet" aria-hidden="true">
+  <div class="broc-handle" aria-hidden="true"></div>
+
+  <div class="broc-media">
+    <img id="brocSheetImage" alt="" />
+    <button class="broc-like" id="brocLikeBtn" type="button" aria-label="Favori">
+      ♡
+    </button>
+
+    <div class="broc-live" id="brocLiveBadge">
+      Flux en direct <span class="broc-play" aria-hidden="true">▶</span>
     </div>
+  </div>
+
+  <div class="broc-body" id="brocantePopupContent">
+    <!-- Contenu dynamique JS -->
+  </div>
+
+  <div class="broc-actions">
+    <button class="broc-btn broc-btn-share" id="brocShareBtn" type="button">
+      Partager <span class="broc-icon" aria-hidden="true"></span>
+    </button>
+    <button class="broc-btn broc-btn-go" id="brocGoBtn" type="button">
+      M’y rendre <span class="broc-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</section>
+
 
     <div class="search-popup-overlay" id="searchPopupOverlay"></div>
     <div class="search-popup" id="searchPopup">
