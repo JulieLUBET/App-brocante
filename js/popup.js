@@ -23,21 +23,17 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  // ✅ Toujours caché au démarrage (pas de flash)
+  // Toujours caché au démarrage
   hidePopup();
 
-  // ✅ Afficher UNIQUEMENT quand on arrive de index.html (après connexion)
+  // Afficher UNIQUEMENT quand on arrive de index.html (après connexion)
   const shouldShow = sessionStorage.getItem("show_loc_popup") === "1";
 
   if (shouldShow) {
     showPopup();
-
-    // ✅ Important : on enlève le flag tout de suite
-    // => si tu reviens sur map depuis une autre page : plus de popup
     sessionStorage.removeItem("show_loc_popup");
   }
 
-  // ✅ Les 3 boutons ferment le popup
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const action = btn.getAttribute("data-loc-action") || "deny";

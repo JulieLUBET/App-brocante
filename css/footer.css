@@ -28,7 +28,7 @@
   text-decoration: none;
   color: var(--color-text);
   transition: background-color 0.2s;
-  border-top: 2px solid transparent; /* pour effet actif */
+  border-top: 2px solid transparent;
 }
 
 .footer a:hover {

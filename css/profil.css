@@ -4,7 +4,6 @@
 body {
   margin: 0;
   min-height: 100vh;
-
   background-image: url("../images/fond.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -13,7 +12,6 @@ body {
 }
 
 /* ------- BANNIERE ET PHOTO ------- */
-
 .profile-header {
   position: relative;
   width: 100%;
@@ -23,7 +21,7 @@ body {
 
 .banner {
   height: 100%;
-  position: relative; /* ✅ permet de positionner le bouton retour dedans */
+  position: relative;
 }
 
 .banner img {
@@ -146,11 +144,9 @@ body {
   display: flex;
   gap: 12px;
   padding: 16px 0;
-
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-
   scroll-snap-type: x mandatory;
 }
 
@@ -171,7 +167,7 @@ body {
 .profil-categories {
   margin-left: 20px;
   margin-top: 18px;
-  padding-bottom: 130px; /* ✅ évite que la navbar cache */
+  padding-bottom: 130px;
 }
 
 .profil-categories h2 {

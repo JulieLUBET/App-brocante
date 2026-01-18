@@ -4,12 +4,11 @@ REGLAGES SECTION
 body {
   margin: 0;
   min-height: 100vh;
-
   background-image: url("../images/fond.png");
-  background-repeat: no-repeat; /* ne se répète pas */
-  background-size: cover; /* s’adapte à l’écran */
-  background-position: center; /* centrée */
-  background-attachment: fixed; /* reste fixe au scroll */
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .main-content h2 {
@@ -24,7 +23,7 @@ body {
 
 .réglage-item {
   display: flex;
-  justify-content: space-between; /* texte à gauche, flèche à droite */
+  justify-content: space-between;
   align-items: center;
   padding: 12px 0;
   cursor: pointer;
@@ -53,7 +52,7 @@ body {
 }
 
 .réglage-item:last-child {
-  border-bottom: none; /* pas de ligne après le dernier item */
+  border-bottom: none;
 }
 
 .réglage-item:hover {

@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const startOffset = mondayIndex(first.getDay());
     const daysInMonth = last.getDate();
 
-    const totalCells = 42; // grille stable
+    const totalCells = 42;
 
     for (let i = 0; i < totalCells; i++) {
       const dayNum = i - startOffset + 1;

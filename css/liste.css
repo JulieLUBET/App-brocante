@@ -7,10 +7,10 @@
 
 .list-container {
   width: 100%;
-  margin: 0 auto; /* centré horizontalement */
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* espace entre chaque item */
+  gap: 1rem;
 }
 
 .liste-item {
@@ -27,7 +27,7 @@
 .liste-image {
   width: 100px;
   height: 100px;
-  background-color: #ccc; /* couleur de fond temporaire */
+  background-color: #ccc;
   border-radius: 8px;
   flex-shrink: 0;
 }

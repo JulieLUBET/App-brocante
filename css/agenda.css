@@ -6,10 +6,10 @@ body {
   min-height: 100vh;
 
   background-image: url("../images/fond.png");
-  background-repeat: no-repeat; /* ne se répète pas */
-  background-size: cover; /* s’adapte à l’écran */
-  background-position: center; /* centrée */
-  background-attachment: fixed; /* reste fixe au scroll */
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-position: center;
+  background-attachment: fixed;
 }
 
 h2 {
@@ -37,32 +37,32 @@ h2 {
   padding: 16px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column; /* empile du haut vers le bas */
-  justify-content: flex-start; /* colle le contenu en haut */
-  align-items: stretch; /* étire horizontalement les enfants */
-  min-height: 84px; /* ajuste la hauteur minimale (à adapter) */
+  flex-direction: column; 
+  justify-content: flex-start; 
+  align-items: stretch;
+  min-height: 84px; 
   gap: 70px;
 }
 
 #agenda1 {
   background-image: url(../images/agenda1.png);
-  background-repeat: no-repeat; /* ne se répète pas */
-  background-size: cover; /* s’adapte à l’écran */
-  background-position: center; /* centrée */
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-position: center; 
 }
 
 #agenda2 {
   background-image: url(../images/agenda2.png);
-  background-repeat: no-repeat; /* ne se répète pas */
-  background-size: cover; /* s’adapte à l’écran */
-  background-position: center; /* centrée */
+  background-repeat: no-repeat; 
+  background-size: cover;
+  background-position: center;
 }
 
 #agenda3 {
   background-image: url(../images/agenda3.png);
-  background-repeat: no-repeat; /* ne se répète pas */
-  background-size: cover; /* s’adapte à l’écran */
-  background-position: center; /* centrée */
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-position: center; 
 }
 
 #agenda1 .agenda-name,
@@ -77,12 +77,10 @@ h2 {
   color: white;
 }
 
-/* Ligne du haut : nom à gauche, heure/date à droite,
-   on aligne les items en haut pour que le nom ne soit pas centré */
 .agenda-top {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* <-- important : aligne en haut */
+  align-items: flex-start; 
   gap: 12px;
 }
 
@@ -92,16 +90,16 @@ h2 {
   font-size: 24px;
   line-height: 1.2;
   margin: 0;
-  align-self: flex-start; /* s'assure qu'il reste collé au haut/gauche */
+  align-self: flex-start; 
 }
 
-/* heure/date : à droite, ne force pas le titre à se centrer */
+/* heure/date : à droite */
 .agenda-time {
   font-size: 14px;
   color: var(--color-text);
   margin: 0;
   text-align: right;
-  white-space: nowrap; /* empêche le wrap si tu veux garder sur une ligne */
+  white-space: nowrap; 
 }
 
 /* Bas de la carte */

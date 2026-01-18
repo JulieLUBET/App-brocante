@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const tabs = document.querySelectorAll(".flux-tab");
   if (!grid) return;
 
-  // ✅ Mets tes images ici (tu changes juste les chemins)
   const data = {
     live: [
       {

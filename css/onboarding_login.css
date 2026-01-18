@@ -89,10 +89,8 @@ body {
   margin: 0;
   text-align: left;
   color: #fff;
-
   font-weight: 900;
   letter-spacing: -0.5px;
-
   -webkit-text-stroke: 0.4px rgba(0, 0, 0, 0.08);
   text-shadow:
     0 1px 0 rgba(0, 0, 0, 0.06),
@@ -129,10 +127,9 @@ body {
   display: block;
 }
 
-/* Steps 2-4: image en bas, un peu remontée */
 .onboarding-container .step .image {
   margin-top: auto;
-  margin-bottom: 32px; /* remonte l'image */
+  margin-bottom: 32px;
   width: 90vw;
   max-width: 420px;
   align-self: center;
@@ -189,7 +186,6 @@ body {
   padding: 0;
   cursor: pointer;
   z-index: 20000;
-
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,12 +1,12 @@
 /* ======================================
    POPUP OVERLAY (iOS mockup)
    ====================================== */
-/* Caché par défaut => plus aucun “flash” */
+/* Caché par défaut */
 .popup-overlay {
   position: fixed;
   inset: 0;
   z-index: 20000;
-  display: none; /* IMPORTANT */
+  display: none;
   align-items: center;
   justify-content: center;
   padding: 18px;
@@ -24,10 +24,8 @@
   width: min(380px, 92vw);
   border-radius: 26px;
   overflow: hidden;
-
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(18px);
-
   box-shadow: 0 18px 55px rgba(0, 0, 0, 0.22);
   border: 1px solid rgba(255, 255, 255, 0.35);
 }

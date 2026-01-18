@@ -75,8 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const LS_SEEDED = "broc_comments_seeded_global";
   const LS_LIKE = `broc_like_${postId}`;
 
-  // ✅ Mêmes commentaires pour tous les posts (comme tu veux)
-  // ✅ Avec PP (tu remplaces pp1/pp2/pp3 si tu veux)
   const DEFAULT_COMMENTS_ALL = [
     {
       author: "Cyril",
@@ -202,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
     openComments();
   });
 
-  // like post (persist)
+  // like post
   const liked = localStorage.getItem(LS_LIKE) === "1";
   if (liked) {
     postLikeBtn.classList.add("active");

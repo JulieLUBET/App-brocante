@@ -53,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (onboardingContainer) onboardingContainer.classList.remove("active");
     if (onboardingOverlay) onboardingOverlay.classList.remove("active");
 
-    // cache bouton replay pendant onboarding
     setReplayVisible(false);
 
     currentStep = 0;
@@ -65,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (onboardingContainer) onboardingContainer.classList.add("active");
     if (onboardingOverlay) onboardingOverlay.classList.add("active");
 
-    // affiche bouton replay sur login
     setReplayVisible(true);
   }
 
@@ -91,16 +89,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Tap n'importe où sur l'onboarding = suivant
   if (onboardingContainer) {
     onboardingContainer.addEventListener("click", (e) => {
-      // si clique sur un dot => on ne fait pas next
       if (e.target && e.target.classList && e.target.classList.contains("dot")) return;
       next();
     });
   }
 
-  // Clic sur dot = aller à la page
   if (dots && dots.length > 0) {
     dots.forEach((dot, index) => {
       dot.addEventListener("click", (e) => {
@@ -157,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =========================================================
-  // ✅ PARTIE 2 : afficher le popup localisation uniquement
+  //    PARTIE 2 : afficher le popup localisation uniquement
   //     quand on quitte index.html -> map.html via "Se connecter"
   // =========================================================
   const loginForm = document.querySelector(".login-section .form");
@@ -165,14 +160,14 @@ document.addEventListener("DOMContentLoaded", () => {
     ? loginForm.querySelector('button[type="submit"]')
     : null;
 
-  // Au clic sur le bouton (très fiable)
+  // Au clic sur le bouton 
   if (loginSubmitBtn) {
     loginSubmitBtn.addEventListener("click", () => {
       sessionStorage.setItem("show_loc_popup", "1");
     });
   }
 
-  // Au submit (sécurité)
+  // Au submit
   if (loginForm) {
     loginForm.addEventListener("submit", () => {
       sessionStorage.setItem("show_loc_popup", "1");

@@ -3,10 +3,10 @@ body {
   min-height: 100vh;
 
   background-image: url("../images/fond.png");
-  background-repeat: no-repeat;      /* ne se répète pas */
-  background-size: cover;             /* s’adapte à l’écran */
-  background-position: center;        /* centrée */
-  background-attachment: fixed;       /* reste fixe au scroll */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 /* ============ HEADER FLUX ============ */
@@ -17,7 +17,7 @@ body {
   margin-top: 20px;
   padding: 16px;
   overflow-y: auto;
-  max-height: calc(100vh - 60px); /* prend en compte header fixe */
+  max-height: calc(100vh - 60px);
 }
 
 .post-page {
@@ -27,7 +27,7 @@ body {
   margin-top: 20px;
   padding: 16px;
   overflow-y: auto;
-  max-height: calc(100vh - 60px); /* prend en compte header fixe */
+  max-height: calc(100vh - 60px);
 }
 
 .flux-location {
@@ -39,15 +39,15 @@ body {
 
 .flux-tabs {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* même logique que .grid */
-  gap: 20px;                      /* même gap que ta .grid */
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   align-items: end;
   margin-top: 6px;
 }
 
 .flux-direct {
   text-align: center;
-  justify-self: center; /* centre dans la colonne */
+  justify-self: center;
 }
 
 .flux-tab {
@@ -64,7 +64,7 @@ body {
 .flux-tab[data-tab="live"] { color: #1f5b38; }
 .flux-tab[data-tab="following"] { 
   color: #f07b2b; 
-  justify-self: center; /* centre dans la colonne 2 */
+  justify-self: center;
   text-align: center;
 }
 
@@ -81,7 +81,7 @@ body {
 
 /* ============ GRILLE ============ */
 .flux-content {
-  padding: 10px 0px 0px; /* laisse la place à ta navbar */
+  padding: 10px 0px 0px;
 }
 
 .grid {
@@ -298,7 +298,7 @@ body {
   border-radius: 999px;
   background-size: cover;
   background-position: center;
-  border: 2px solid #f07b2b; /* orange */
+  border: 2px solid #f07b2b;
 }
 
 .cmt-body { min-width: 0; }
@@ -319,7 +319,7 @@ body {
   height: 44px;
   border: none;
   background: transparent;
-  font-size: 26px;       /* <- plus gros */
+  font-size: 26px;
   cursor: pointer;
   color: #f07b2b;
 }
