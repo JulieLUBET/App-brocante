@@ -266,6 +266,32 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ============================
      TAGS CLIQUABLES (brocantes uniquement)
      ============================ */
+
+  // UI : remonter les tags actifs au début de leur ligne (sans casser la logique
+  // de filtres). On mémorise l'ordre initial pour garder un tri stable.
+  function initTagOrders() {
+    document.querySelectorAll(".tags").forEach((group) => {
+      Array.from(group.querySelectorAll(".tag")).forEach((el, idx) => {
+        if (!el.dataset.order) el.dataset.order = String(idx);
+      });
+    });
+  }
+
+  function reorderTagsInGroup(group) {
+    if (!group) return;
+    const items = Array.from(group.querySelectorAll(".tag"));
+    items
+      .sort((a, b) => {
+        const aActive = a.classList.contains("active") ? 1 : 0;
+        const bActive = b.classList.contains("active") ? 1 : 0;
+        if (aActive !== bActive) return bActive - aActive; // actifs d'abord
+        return Number(a.dataset.order || 0) - Number(b.dataset.order || 0);
+      })
+      .forEach((el) => group.appendChild(el));
+  }
+
+  initTagOrders();
+
   document.querySelectorAll(".tag").forEach((tag) => {
     tag.addEventListener("click", () => {
       if (modeAffichage !== "brocantes") return;
@@ -281,6 +307,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         filtres.categorie = isActive ? null : value;
         if (!isActive) tag.classList.add("active");
+
+        reorderTagsInGroup(tag.closest(".tags"));
       }
 
       if (type === "periode") {
@@ -291,12 +319,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         filtres.periode = isActive ? null : value;
         if (!isActive) tag.classList.add("active");
+
+        reorderTagsInGroup(tag.closest(".tags"));
       }
 
       if (type === "tag") {
         tag.classList.toggle("active");
         if (tag.classList.contains("active")) filtres.tags.push(value);
         else filtres.tags = filtres.tags.filter((t) => t !== value);
+
+        reorderTagsInGroup(tag.closest(".tags"));
       }
 
       afficherBrocantesFiltres();

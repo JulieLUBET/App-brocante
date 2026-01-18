@@ -2,61 +2,67 @@
   {
     "nom": "Marché aux Puces de Saint-Ouen",
     "lieu": "Saint-Ouen",
-    "coords": [48.9022,2.3445],
-    "categorie": "Marché aux Puces",
-    "markerImage": "images/broc1.png",
-    "presentationImage": "images/brocante1.png",
     "date": "Tous les samedis",
     "description": "Le plus grand marché aux puces de Paris avec plus de 2000 stands.",
-    "tags": ["permanente", "puces","vintage"]
+    "tags": ["permanente", "puces","vintage"],
+    "categorie": "Marché aux Puces",
+    "coords": [48.9022,2.3445],
+    "markerImage": "images/point3.png",
+    "presentationImage": "images/brocante1.png"
   },
   {
     "nom": "Marché aux Puces de la Porte de Vanves",
     "lieu": "Paris",
-    "coords": [48.8266,2.3136],
+    "date": "Tous les dimanches",
+    "description": "Un marché aux puces convivial avec une grande variété d'objets anciens.",
+    "tags": ["permanente", "vintage"],
     "categorie": "Marché aux Puces",
+    "coords": [48.8266,2.3136],
     "markerImage": "images/point2.png",
     "presentationImage": "images/brocante1.png"
   },
   {
     "nom": "Marché aux Puces de Montreuil",
     "lieu": "Montreuil",
-    "coords": [48.8631,2.4196],
-    "categorie": "Marché aux Puces",
-    "markerImage": "images/point3.png",
-    "presentationImage": "images/brocante1.png",
     "date": "Dimanche et lundi",
     "description": "Brocantes et objets anciens pour les passionnés.",
-    "tags": ["permanente", "puces","antiquités"]
+    "tags": ["permanente", "puces","antiquités"],
+    "categorie": "Marché aux Puces",
+    "coords": [48.8631,2.4196],
+    "markerImage": "images/point3.png",
+    "presentationImage": "images/brocante1.png"
   },
   {
     "nom": "Marché d'Aligre",
     "lieu": "Paris",
-    "coords": [48.8492,2.3808],
-    "categorie": "Marché Alimentaire",
-    "markerImage": "images/broc1.png",
-    "presentationImage": "images/brocante1.png",
     "date": "Du mardi au dimanche",
     "description": "Marché alimentaire avec produits frais et locaux.",
-    "tags": ["permanente", "alimentaire","local"]
+    "tags": ["permanente", "alimentaire","local"],
+    "categorie": "Marché Alimentaire",
+    "coords": [48.8492,2.3808],
+    "markerImage": "images/broc1.png",
+    "presentationImage": "images/brocante1.png"
   },
   {
     "nom": "Brocante de la Place de la République",
     "lieu": "Paris",
-    "coords": [48.8670,2.3630],
+    "date": "Samedi 24 Janvier 2025 - 9h à 18h",
+    "description": "Grande brocante temporaire avec une variété d'objets vintage et antiques.",
+    "tags": ["temporaire", "vintage"],
     "categorie": "Brocante",
+    "coords": [48.8670,2.3630],
     "markerImage": "images/broc1.png",
     "presentationImage": "images/brocante1.png"
   },
   {
     "nom": "Bourse aux jouets",
     "lieu": "Paris",
-    "coords": [48.8770,2.3530],
-    "categorie": "Brocante",
-    "markerImage": "images/broc1.png",
-    "presentationImage": "images/bourse_jouets.png",
     "date": "Dimanche 07 Décembre 2025 - 10h à 17h",
     "description": "La bourse aux jouets de Servon fait son retour!Environ 80 exposants cette année avec buvette, manèges et animations. Envie de faires de bonnes affaires avant les fêtes ? Collectionneur cherchant la perle rare ? Il y en aura pour tous",
-    "tags": ["temporaire", "jouets", "jeux vidéo" ]
+    "tags": ["temporaire", "jouets", "jeux vidéo" ],
+    "categorie": "Brocante",
+    "coords": [48.8770,2.3530],
+    "markerImage": "images/point2.png",
+    "presentationImage": "images/bourse_jouets.png"
   }
 ]

@@ -21,11 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (openBtn) openBtn.addEventListener("click", openPopup);
   if (overlay) overlay.addEventListener("click", closePopup);
 
-  // ---------- TAGS TOGGLE ----------
-  document.querySelectorAll(".tag").forEach((tag) => {
-    tag.addEventListener("click", () => tag.classList.toggle("active"));
-  });
-
   // ---------- CALENDAR  ----------
   const calGrid = document.getElementById("calGrid");
   const calMonthLabel = document.getElementById("calMonthLabel");
@@ -73,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const startOffset = mondayIndex(first.getDay());
     const daysInMonth = last.getDate();
 
-    const totalCells = 42;
+    const totalCells = 42; // grille stable
 
     for (let i = 0; i < totalCells; i++) {
       const dayNum = i - startOffset + 1;
