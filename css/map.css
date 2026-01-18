@@ -1,20 +1,22 @@
 /* ======================================
    POPUP OVERLAY (iOS mockup)
    ====================================== */
+/* Caché par défaut => plus aucun “flash” */
 .popup-overlay {
   position: fixed;
   inset: 0;
   z-index: 20000;
-
-  display: flex;
+  display: none; /* IMPORTANT */
   align-items: center;
   justify-content: center;
-
   padding: 18px;
-
-  /* fond très léger, on voit bien la map derrière */
   background: rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(2px);
+}
+
+/* Visible uniquement quand JS ajoute la classe */
+.popup-overlay.is-open {
+  display: flex;
 }
 
 /* Carte principale */
@@ -30,20 +32,12 @@
   border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-/* Haut : icône + texte */
-/* Haut empilé : icône puis texte */
 .popup-top.popup-top--stack {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* comme iOS : aligné à gauche */
+  align-items: center;
   gap: 12px;
   padding: 18px 18px 12px;
-}
-
-.popup-top.popup-top--stack .popup-appicon {
-  width: 62px;
-  height: 62px;
-  border-radius: 16px;
 }
 
 .popup-appicon {
@@ -53,7 +47,6 @@
   overflow: hidden;
   display: grid;
   place-items: center;
-  background: transparent;
 }
 
 .popup-appicon img {
@@ -65,32 +58,29 @@
 
 .popup-text h2 {
   margin: 0 0 10px;
-  font-size: 18px; 
+  font-size: 16px;
   line-height: 1.2;
   font-weight: 900;
   color: #111;
   letter-spacing: -0.2px;
-  padding: 10px 0px;
+  text-align: center;
 }
 
 .popup-text p {
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.35;
   color: rgba(0, 0, 0, 0.6);
   font-weight: 500;
   text-align: center;
-  padding: 8px;
 }
 
-/* Aperçu carte au milieu */
+/* Aperçu carte */
 .popup-mappreview {
   position: relative;
   margin: 0 18px 14px;
   border-radius: 18px;
   overflow: hidden;
-
-  /* petit voile comme iOS */
   background: rgba(255, 255, 255, 0.35);
 }
 
@@ -100,7 +90,44 @@
   display: block;
 }
 
-/* Boutons iOS : 3 pills gris avec contour */
+/* Pastille */
+.popup-exact-pill {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  font-size: 13px;
+  font-weight: 700;
+  color: #0b5bd3;
+}
+
+.pill-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #1a73e8;
+  position: relative;
+}
+
+.pill-dot::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 7px;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #fff;
+  opacity: 0.9;
+}
+
+/* Boutons */
 .popup-actions--ios {
   padding: 0 18px 18px;
   display: flex;
@@ -112,17 +139,12 @@
   width: 100%;
   border: 1.6px solid rgba(0, 0, 0, 0.25);
   background: rgba(255, 255, 255, 0.4);
-
   border-radius: 999px;
   padding: 14px 16px;
-
   font-size: 16px;
   font-weight: 800;
   color: #111;
-
   cursor: pointer;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
-    Roboto, Arial, sans-serif;
 }
 
 .popup-pill:active {
@@ -140,9 +162,9 @@
   margin: 0;
   flex: 1;
   overflow-y: auto;
-  padding: 0; /* espace pour header/footer */
-  scrollbar-width: none; /* pour Firefox */
-  -ms-overflow-style: none; /* pour Internet Explorer et Edge */
+  padding: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .carte-app {
@@ -154,23 +176,112 @@
   display: none !important;
 }
 
+.header--map #open-search.btn-main {
+  width: auto;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px ;
+  border-radius: 999px ;
+  border: none;
+  background-color: var(--color-btn-2-bg);
+  color: var(--color-btn-2-text);
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.header--map {
+  position: fixed;
+  top: 12px;
+  left: 0;
+  right: 0;
+  z-index: 9990;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 14px;
+  pointer-events: none;
+}
+
+.header--map #open-search {
+  pointer-events: auto;
+}
+
+.switch-map-btn {
+  pointer-events: auto;
+  margin-left: 10px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.switch-map-btn img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
+}
+
+.leaflet-div-icon.friend-div-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.friend-marker {
+  width: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.friend-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 4px solid #c9d65b;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.friend-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.friend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #1f5c43;
+}
+
 /* ======================================
    POPUP DE RECHERCHE SECTION
    ====================================== */
-
-/* Popup Recherche */
 .search-popup {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 70%;
-  background: var(--color-bg);
-  border-radius: 18px 18px 0 0;
-  box-shadow: var(--color-shadow);
+  height: 72%;
+  background: #f6ead6;
+  border-radius: 22px 22px 0 0;
+  box-shadow: 0 -18px 40px rgba(0, 0, 0, 0.14);
   transform: translateY(100%);
   transition: transform 0.35s ease;
-  padding: 20px;
+  padding: 18px 18px 24px;
   z-index: 2000;
 }
 
@@ -181,78 +292,14 @@
 .search-popup-content {
   height: 100%;
   overflow-y: auto;
+  padding-bottom: 30px;
 }
 
-.search-popup label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-  color: var(--color-title);
-}
-
-.search-row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-#btn-geoloc {
-  padding: 8px 12px;
-  border-radius: 20px;
-  border: none;
-  background-color: var(--color-btn-2-bg);
-  color: var(--color-btn-2-text);
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-#search-city {
-  flex: 1;
-  padding: 8px;
-  border-radius: 20px;
-  border: 1px solid #ddd;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.tags span {
-  background-color: var(--color-btn-2-bg);
-  color: var(--color-btn-2-text);
-  padding: 6px 12px;
-  border-radius: 14px;
-  cursor: pointer;
-}
-
-.tags span.active {
-  background-color: var(--color-sous-title);
-  color: white;
-}
-
-.btn-main {
-  display: block;
-  width: 40%;
-  padding: 12px;
-  margin-top: 15px;
-  border: none;
-  border-radius: 30px;
-  background-color: var(--color-btn-2-bg);
-  color: var(--color-btn-2-text);
-  font-size: 16px;
-  cursor: pointer;
-}
-
+/* Overlay */
 .search-popup-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.2);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
   z-index: 1999;
   display: none;
 }
@@ -261,22 +308,174 @@
   display: block;
 }
 
+/* Titres */
+.sp-title {
+  margin: 12px 0 8px;
+  font-size: 22px;
+  font-weight: 900;
+  color: #111;
+}
+
+/* Ligne "Où ?" : bouton + input alignés */
+.sp-where-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+/* Bouton proximité */
+.sp-pill {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 14px;
+  font-weight: 900;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.sp-pill--green {
+  background: #c9d65b;
+  color: #1f5c43;
+}
+
+/* Input */
+.sp-input {
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  padding: 12px 14px;
+  background: #fff;
+  outline: none;
+  font-size: 14px;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tags .tag {
+  background: #c9d65b;
+  color: #1f5c43;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.tags .tag.active {
+  background: #1f5c43;
+  color: #fff;
+}
+
+/* ✅ CALENDRIER */
+.cal-card {
+  background: #f6a7c6;
+  border-radius: 18px;
+  padding: 14px 14px 16px;
+  margin-bottom: 6px;
+}
+
+.cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cal-month {
+  font-size: 16px;
+  font-weight: 900;
+  color: #111;
+}
+
+.cal-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.cal-nav-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: none;
+  background: #1f5c43;
+  color: #fff;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.75);
+  text-align: center;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.cal-day,
+.cal-empty {
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+  user-select: none;
+}
+
+.cal-empty {
+  opacity: 0;
+}
+
+.cal-day {
+  background: rgba(255, 255, 255, 0.35);
+  color: #111;
+  cursor: pointer;
+}
+
+.cal-day:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.cal-day.is-selected {
+  background: #1f5c43;
+  color: #fff;
+}
+
 /* ======================================
    AMIS CONNECTÉS SECTION
    ====================================== */
-
-/* --- CONTENEUR PRINCIPAL --- */
 .friends-panel {
   position: fixed;
-  bottom: 120px; /* au-dessus de la navbar */
-  right: 0; /* collé au bord droit */
+  bottom: 120px;
+  right: 0;
   z-index: 9000;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-/* --- BOUTON QUI OUVRE/FERME --- */
 .friends-toggle {
   background: var(--color-bg);
   border-radius: 50%;
@@ -289,46 +488,40 @@
   font-size: 20px;
   cursor: pointer;
   user-select: none;
-  z-index: 9100; /* au-dessus du contenu */
+  z-index: 9100;
 }
 
-/* --- CONTENU GLISSANT --- */
 .friends-content {
   display: flex;
   align-items: center;
   gap: 10px;
   background: var(--color-bg);
   padding: 8px 12px;
-  border-radius: 30px 0 0 30px; /* arrondi gauche seulement */
+  border-radius: 30px 0 0 30px;
   box-shadow: var(--color-shadow);
-
-  transform: translateX(100%); /* complètement caché à droite */
+  transform: translateX(100%);
   opacity: 0;
   pointer-events: none;
   transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
-/* --- ACTIVE : slide vers la gauche --- */
 .friends-panel.open .friends-content {
-  transform: translateX(0); /* glisse pour être visible */
+  transform: translateX(0);
   opacity: 1;
   pointer-events: auto;
 }
 
-/* --- FLECHE → --- */
 .friends-toggle::after {
-  content: "←"; /* flèche sur le bouton */
+  content: "←";
   font-size: 20px;
   color: var(--color-sous-title);
   transition: transform 0.35s ease;
 }
 
-/* Quand ouvert : changer la flèche du bouton */
 .friends-panel.open .friends-toggle::after {
-  transform: rotate(180deg); /* pointe vers l’autre sens */
+  transform: rotate(180deg);
 }
 
-/* --- IMAGES AMIS EN ROND --- */
 .friends-content img {
   width: 38px;
   height: 38px;
@@ -338,9 +531,8 @@
 }
 
 /* =========================
-   POPUP BROCANTE (BOTTOM SHEET - modèle)
+   POPUP BROCANTE
    ========================= */
-
 .broc-sheet-overlay {
   position: fixed;
   inset: 0;
@@ -359,14 +551,11 @@
   right: 0;
   bottom: 0;
   z-index: 9001;
-
   background: var(--color-bg);
   border-radius: 26px 26px 0 0;
   box-shadow: 0 -18px 40px rgba(0, 0, 0, 0.18);
-
   transform: translateY(110%);
   transition: transform 0.28s ease;
-
   padding: 10px 14px 16px;
   max-height: 78vh;
   overflow: hidden;
@@ -384,7 +573,6 @@
   margin: 6px auto 12px;
 }
 
-/* Zone image */
 .broc-media {
   position: relative;
   border-radius: 18px;
@@ -399,12 +587,11 @@
   display: block;
 }
 
-/* Coeur */
 .broc-like {
   position: absolute;
   right: 12px;
-  bottom: 12px; /* <-- au lieu de top */
-  top: auto; /* <-- sécurité */
+  bottom: 12px;
+  top: auto;
   width: 40px;
   height: 40px;
   border-radius: 999px;
@@ -420,17 +607,14 @@
   color: #f07b2b;
 }
 
-/* Badge live */
 .broc-live {
   position: absolute;
   left: 12px;
   bottom: 12px;
-
   background: #1f5b38;
   color: #fff;
   border-radius: 999px;
   padding: 8px 12px;
-
   font-weight: 800;
   font-size: 13px;
   display: inline-flex;
@@ -442,7 +626,6 @@
   font-size: 12px;
 }
 
-/* Contenu texte */
 .broc-body {
   overflow-y: auto;
   max-height: calc(78vh - 200px - 74px);
@@ -479,7 +662,6 @@
   opacity: 0.9;
 }
 
-/* Tags */
 .broc-tags {
   display: flex;
   flex-wrap: wrap;
@@ -496,7 +678,6 @@
   font-size: 13px;
 }
 
-/* Boutons bas */
 .broc-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;

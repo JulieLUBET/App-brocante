@@ -14,7 +14,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-top: 50px;
+  margin-top: 20px;
   padding: 16px;
   overflow-y: auto;
   max-height: calc(100vh - 60px); /* prend en compte header fixe */
@@ -24,7 +24,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-top: 50px;
+  margin-top: 20px;
   padding: 16px;
   overflow-y: auto;
   max-height: calc(100vh - 60px); /* prend en compte header fixe */
@@ -181,8 +181,10 @@ body {
 
 .post-media img {
   width: 100%;
+  height: 450px;        
+  object-fit: cover;
+  border-radius: 22px;
   display: block;
-  height: auto;
 }
 
 .post-like, .post-comment {
@@ -210,7 +212,18 @@ body {
 }
 
 .stickers-row {
-  margin-top: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.sticker-img {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  display: block;
 }
 
 .sticker {
@@ -218,6 +231,8 @@ body {
   height: 62px;
   border-radius: 999px;
   background: #ddd;
+  background-size: cover;
+  background-position: center;
 }
 
 /* ============ COMMENTAIRES (BOTTOM SHEET) ============ */
@@ -271,44 +286,51 @@ body {
 
 .cmt-item {
   display: grid;
-  grid-template-columns: 44px 1fr 44px;
-  gap: 10px;
-  align-items: start;
-  padding: 10px 0;
+  grid-template-columns: 42px 1fr 44px;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 4px;
 }
 
 .cmt-avatar {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 999px;
-  background: #ddd;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #f07b2b; /* orange */
 }
+
+.cmt-body { min-width: 0; }
 
 .cmt-name {
   font-weight: 900;
+  font-size: 16px;
 }
 
 .cmt-text {
+  font-size: 14px;
+  line-height: 1.25;
   opacity: 0.9;
-  margin-top: 2px;
 }
 
 .cmt-like {
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
+  width: 44px;
+  height: 44px;
   border: none;
   background: transparent;
-  font-size: 18px;
+  font-size: 26px;       /* <- plus gros */
   cursor: pointer;
   color: #f07b2b;
 }
 
+.cmt-like.active {
+  color: #f07b2b;
+}
+
 .cmt-input-zone {
-  display: grid;
-  grid-template-columns: 1fr 110px;
-  gap: 10px;
-  margin-top: 12px;
+  font-size: 14px; 
+  padding: 12px 14px;
 }
 
 .cmt-input-zone input {

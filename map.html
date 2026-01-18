@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BrocMap - Carte</title>
+
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/map.css" />
+
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -13,18 +15,30 @@
       crossorigin=""
     />
   </head>
+
   <body>
-    <header class="header">
-      <button id="open-search" class="btn-main">Recherche</button>
+    <!-- HEADER MAP : Recherche + Switch -->
+    <header class="header header--map">
+      <button id="open-search" class="btn-main">Rechercher</button>
+
+      <!-- Switch brocantes/amis -->
+      <button
+        id="switchMapBtn"
+        class="switch-map-btn"
+        type="button"
+        aria-label="Basculer brocantes/amis"
+      >
+        <img
+          id="switchMapIcon"
+          src="images/icon_switch_map.png"
+          alt=""
+          draggable="false"
+        />
+      </button>
     </header>
 
     <!-- POPUP AUTORISATION -->
-    <div
-      class="popup-overlay"
-      id="popupOverlay"
-      role="dialog"
-      aria-modal="true"
-    >
+    <div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true">
       <div class="popup-box popup-box--ios">
         <div class="popup-top popup-top--stack">
           <div class="popup-appicon" aria-hidden="true">
@@ -34,16 +48,19 @@
           <div class="popup-text">
             <h2>Autoriser “Trôve” à utiliser votre position ?</h2>
             <p>
-              Votre position est utilisée pour indiquer votre position sur le
-              plan, obtenir des itinéraires et des estimations de temps de
-              trajet, ainsi que pour améliorer les résultats de recherche.
+              Votre position est utilisée pour indiquer votre position sur le plan,
+              obtenir des itinéraires et des estimations de temps de trajet, ainsi que
+              pour améliorer les résultats de recherche.
             </p>
           </div>
         </div>
 
-        <!-- Aperçu carte (ton image Fields.png) -->
         <div class="popup-mappreview">
           <img src="./images/Fields.png" alt="" />
+          <div class="popup-exact-pill">
+            <span class="pill-dot" aria-hidden="true"></span>
+            Position exacte : <strong>Oui</strong>
+          </div>
         </div>
 
         <div class="popup-actions popup-actions--ios">
@@ -55,11 +72,7 @@
             Autoriser lorsque l’app est active
           </button>
 
-          <button
-            class="popup-pill popup-pill--danger"
-            type="button"
-            data-loc-action="deny"
-          >
+          <button class="popup-pill popup-pill--danger" type="button" data-loc-action="deny">
             Ne pas autoriser
           </button>
         </div>
@@ -78,12 +91,7 @@
 
       <div class="broc-media">
         <img id="brocSheetImage" alt="" />
-        <button
-          class="broc-like"
-          id="brocLikeBtn"
-          type="button"
-          aria-label="Favori"
-        >
+        <button class="broc-like" id="brocLikeBtn" type="button" aria-label="Favori">
           ♡
         </button>
 
@@ -92,9 +100,7 @@
         </div>
       </div>
 
-      <div class="broc-body" id="brocantePopupContent">
-        <!-- Contenu dynamique JS -->
-      </div>
+      <div class="broc-body" id="brocantePopupContent"></div>
 
       <div class="broc-actions">
         <button class="broc-btn broc-btn-share" id="brocShareBtn" type="button">
@@ -106,56 +112,71 @@
       </div>
     </section>
 
+    <!-- SEARCH POPUP -->
     <div class="search-popup-overlay" id="searchPopupOverlay"></div>
-    <div class="search-popup" id="searchPopup">
-      <div class="search-popup-content">
-        <!-- Où ? -->
-        <label>Où ?</label>
-        <div class="search-row">
-          <button id="btn-geoloc" class="btn-geoloc">A proximité</button>
-          <input
-            type="text"
-            id="search-city"
-            placeholder="Rechercher un lieu ..."
-          />
-        </div>
 
-        <!-- Quand ? -->
-        <label>Quand ?</label>
-        <input type="date" id="search-date" />
+<div class="search-popup" id="searchPopup" aria-hidden="true">
+  <div class="search-popup-content">
+    <!-- Où ? -->
+    <h3 class="sp-title">Où ?</h3>
 
-        <!-- Quoi ? -->
-        <label>Quoi ?</label>
-        <div class="tags">
-          <span class="tag" data-type="periode" data-value="permanente"
-            >permanente</span
-          >
-          <span class="tag" data-type="periode" data-value="temporaire"
-            >temporaire</span
-          >
-        </div>
+    <div class="sp-where-row">
+      <button id="btn-geoloc" class="sp-pill sp-pill--green" type="button">
+        📍 À proximité
+      </button>
+      <input
+      type="text"
+      id="search-city"
+      class="sp-input"
+      placeholder="Rechercher un lieu ..."
+    />
+    </div>    
 
-        <div class="tags">
-          <span class="tag" data-type="categorie" data-value="Marché aux Puces"
-            >Marchés aux Puces</span
-          >
-          <span class="tag" data-type="categorie" data-value="Brocante"
-            >Brocantes</span
-          >
-        </div>
+    <!-- Quand ? -->
+    <h3 class="sp-title">Quand ?</h3>
 
-        <div class="tags">
-          <span class="tag" data-type="tag" data-value="puces">puces</span>
-          <span class="tag" data-type="tag" data-value="vintage">vintage</span>
-          <span class="tag" data-type="tag" data-value="antiquités"
-            >antiquités</span
-          >
-          <span class="tag" data-type="tag" data-value="alimentaire"
-            >alimentaire</span
-          >
+    <!-- Calendrier intégré -->
+    <div class="cal-card" id="calCard">
+      <div class="cal-head">
+        <div class="cal-month" id="calMonthLabel">Janvier 2026</div>
+
+        <div class="cal-nav">
+          <button type="button" class="cal-nav-btn" id="calPrev" aria-label="Mois précédent">‹</button>
+          <button type="button" class="cal-nav-btn" id="calNext" aria-label="Mois suivant">›</button>
         </div>
       </div>
+
+      <div class="cal-weekdays">
+        <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+      </div>
+
+      <div class="cal-grid" id="calGrid"></div>
+
+      <input type="hidden" id="search-date" />
     </div>
+
+    <!-- Quoi ? -->
+    <h3 class="sp-title">Quoi ?</h3>
+
+    <div class="tags">
+      <span class="tag" data-type="periode" data-value="permanente">permanente</span>
+      <span class="tag" data-type="periode" data-value="temporaire">temporaire</span>
+    </div>
+
+    <div class="tags">
+      <span class="tag" data-type="categorie" data-value="Marché aux Puces">Marchés aux Puces</span>
+      <span class="tag" data-type="categorie" data-value="Brocante">Brocantes</span>
+    </div>
+
+    <div class="tags">
+      <span class="tag" data-type="tag" data-value="puces">puces</span>
+      <span class="tag" data-type="tag" data-value="vintage">vintage</span>
+      <span class="tag" data-type="tag" data-value="antiquités">antiquités</span>
+      <span class="tag" data-type="tag" data-value="alimentaire">alimentaire</span>
+    </div>
+  </div>
+</div>
+
 
     <nav class="navbar">
       <ul class="nav-links">

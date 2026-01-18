@@ -5,7 +5,7 @@
     "coords": [48.9022,2.3445],
     "categorie": "Marché aux Puces",
     "markerImage": "images/broc1.png",
-    "presentationImage": "images/onboarding1.png",
+    "presentationImage": "images/brocante1.png",
     "date": "Tous les samedis",
     "description": "Le plus grand marché aux puces de Paris avec plus de 2000 stands.",
     "tags": ["permanente", "puces","vintage"]
@@ -15,16 +15,16 @@
     "lieu": "Paris",
     "coords": [48.8266,2.3136],
     "categorie": "Marché aux Puces",
-    "markerImage": "images/broc1.png",
-    "presentationImage": "images/onboarding1.png"
+    "markerImage": "images/point2.png",
+    "presentationImage": "images/brocante1.png"
   },
   {
     "nom": "Marché aux Puces de Montreuil",
     "lieu": "Montreuil",
     "coords": [48.8631,2.4196],
     "categorie": "Marché aux Puces",
-    "markerImage": "images/broc1.png",
-    "presentationImage": "images/onboarding1.png",
+    "markerImage": "images/point3.png",
+    "presentationImage": "images/brocante1.png",
     "date": "Dimanche et lundi",
     "description": "Brocantes et objets anciens pour les passionnés.",
     "tags": ["permanente", "puces","antiquités"]
@@ -35,7 +35,7 @@
     "coords": [48.8492,2.3808],
     "categorie": "Marché Alimentaire",
     "markerImage": "images/broc1.png",
-    "presentationImage": "images/onboarding1.png",
+    "presentationImage": "images/brocante1.png",
     "date": "Du mardi au dimanche",
     "description": "Marché alimentaire avec produits frais et locaux.",
     "tags": ["permanente", "alimentaire","local"]
@@ -46,7 +46,7 @@
     "coords": [48.8670,2.3630],
     "categorie": "Brocante",
     "markerImage": "images/broc1.png",
-    "presentationImage": "images/onboarding1.png"
+    "presentationImage": "images/brocante1.png"
   },
   {
     "nom": "Bourse aux jouets",

@@ -9,7 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }).addTo(map);
 
   /* ============================
-     VARIABLES GLOBALES
+     MODE : brocantes (default) / amis
+     ============================ */
+  let modeAffichage = "brocantes";
+
+  const SWITCH_ICON_BROC_TO_AMIS = "images/icon_switch_map.png";
+  const SWITCH_ICON_AMIS_TO_BROC = "images/icon_switch_map2.png";
+
+  const switchMapBtn = document.getElementById("switchMapBtn");
+  const switchMapIcon = document.getElementById("switchMapIcon");
+
+  /* ============================
+     VARIABLES BROCANTES
      ============================ */
   let brocantes = [];
   let marqueursBrocantes = [];
@@ -25,48 +36,49 @@ document.addEventListener("DOMContentLoaded", () => {
   const brocGoBtn = document.getElementById("brocGoBtn");
   const brocShareBtn = document.getElementById("brocShareBtn");
 
-  brocLiveBadge.addEventListener("click", () => {
-    window.location.href = "flux.html";
-  });
+  if (brocLiveBadge) {
+    brocLiveBadge.addEventListener("click", () => {
+      window.location.href = "flux.html";
+    });
+  }
 
   function openBrocSheet() {
+    if (!brocanteSheet || !brocanteSheetOverlay) return;
     brocanteSheet.classList.add("open");
     brocanteSheetOverlay.classList.add("active");
     brocanteSheet.setAttribute("aria-hidden", "false");
   }
 
   function closeBrocSheet() {
+    if (!brocanteSheet || !brocanteSheetOverlay) return;
     brocanteSheet.classList.remove("open");
     brocanteSheetOverlay.classList.remove("active");
     brocanteSheet.setAttribute("aria-hidden", "true");
   }
 
-  brocanteSheetOverlay.addEventListener("click", closeBrocSheet);
+  if (brocanteSheetOverlay) brocanteSheetOverlay.addEventListener("click", closeBrocSheet);
 
   /* ============================
-     FILTRES
+     FILTRES (brocantes uniquement)
      ============================ */
   const filtres = {
-    categorie: null, // Brocante / Marché aux Puces
-    periode: null, // permanente / temporaire
-    tags: [], // puces, vintage, etc.
-    recherche: "", // Recherche par texte
+    categorie: null,
+    periode: null,
+    tags: [],
+    recherche: "",
   };
 
   /* ============================
-     CHARGEMENT DES DONNÉES
+     CHARGEMENT BROCANTES
      ============================ */
   fetch("data/localisation.json")
     .then((res) => res.json())
     .then((data) => {
       brocantes = data;
-      afficherMarqueursFiltres();
+      afficherBrocantesFiltres();
     })
     .catch((err) => console.error("Erreur JSON :", err));
 
-  /* ============================
-     ICÔNES
-     ============================ */
   function createIcon(imageUrl) {
     return L.icon({
       iconUrl: imageUrl,
@@ -75,130 +87,108 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ============================
-     AFFICHAGE DES MARQUEURS
-     ============================ */
-  function afficherMarqueursFiltres() {
+  function clearBrocantesMarkers() {
     marqueursBrocantes.forEach((m) => map.removeLayer(m));
     marqueursBrocantes = [];
+  }
+
+  function afficherBrocantesFiltres() {
+    if (modeAffichage !== "brocantes") return;
+
+    clearBrocantesMarkers();
 
     let resultat = [...brocantes];
 
-    /* =========================
-     FILTRE CATEGORIE (exclusif)
-     ========================= */
     if (filtres.categorie) {
       resultat = resultat.filter((b) => b.categorie === filtres.categorie);
     }
 
-    /* =========================
-     FILTRE PERIODE (exclusif)
-     ========================= */
     if (filtres.periode) {
-      resultat = resultat.filter(
-        (b) => b.tags && b.tags.includes(filtres.periode)
-      );
+      resultat = resultat.filter((b) => b.tags && b.tags.includes(filtres.periode));
     }
 
-    /* =========================
-     FILTRE TAGS (cumulables)
-     ========================= */
     if (filtres.tags.length > 0) {
-      resultat = resultat.filter(
-        (b) => b.tags && filtres.tags.every((tag) => b.tags.includes(tag))
-      );
+      resultat = resultat.filter((b) => b.tags && filtres.tags.every((tag) => b.tags.includes(tag)));
     }
 
-    /* =========================
-     FILTRE RECHERCHE TEXTE (lieu, nom, description)
-     ========================= */
     if (filtres.recherche) {
       resultat = resultat.filter((b) => {
-        const texte = `${b.nom || ""} ${b.lieu || ""} ${
-          b.description || ""
-        }`.toLowerCase();
-
+        const texte = `${b.nom || ""} ${b.lieu || ""} ${b.description || ""}`.toLowerCase();
         return texte.includes(filtres.recherche);
       });
     }
 
-    /* =========================
-     AFFICHAGE
-     ========================= */
     resultat.forEach((b) => {
       const iconUrl = b.markerImage || "./images/broc1.png";
-      const marker = L.marker(b.coords, {
-        icon: createIcon(iconUrl),
-      }).addTo(map);
+
+      const marker = L.marker(b.coords, { icon: createIcon(iconUrl) }).addTo(map);
 
       marker.on("click", () => {
-        // 1) Image
-        if (b.presentationImage) {
+        if (modeAffichage !== "brocantes") return;
+
+        if (b.presentationImage && brocSheetImage) {
           brocSheetImage.src = b.presentationImage;
           brocSheetImage.alt = b.nom || "Événement";
-        } else {
-          brocSheetImage.removeAttribute("src");
-          brocSheetImage.alt = "";
         }
 
-        // 2) Badge live (optionnel)
-        // Si tu veux gérer par JSON: b.live === true/false
-        if (b.live === false) {
-          brocLiveBadge.style.display = "none";
-        } else {
-          brocLiveBadge.style.display = "inline-flex";
+        if (brocLiveBadge) {
+          brocLiveBadge.style.display = b.live === false ? "none" : "inline-flex";
         }
 
-        // 3) Contenu
-        brocantePopupContent.innerHTML = `
-    <h3 class="broc-title">${b.nom || ""}</h3>
-    <p class="broc-sub">${b.lieu || ""}</p>
-    ${b.date ? `<p class="broc-date">${b.date}</p>` : ""}
-    ${b.description ? `<p class="broc-desc">${b.description}</p>` : ""}
-    ${
-      b.tags && b.tags.length
-        ? `<div class="broc-tags">${b.tags
-            .map((t) => `<span class="broc-tag">${t}</span>`)
-            .join("")}</div>`
-        : ""
-    }
-  `;
-
-        // 4) Like (simple UI)
-        brocLikeBtn.classList.remove("active");
-        brocLikeBtn.textContent = "♡";
-        brocLikeBtn.onclick = () => {
-          const active = brocLikeBtn.classList.toggle("active");
-          brocLikeBtn.textContent = active ? "♥" : "♡";
-        };
-
-        // 5) Bouton "M'y rendre"
-        brocGoBtn.onclick = () => {
-          if (b.coords && b.coords.length === 2) {
-            const [lat, lng] = b.coords;
-            window.open(
-              `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`,
-              "_blank"
-            );
-          }
-        };
-
-        // 6) Bouton "Partager"
-        brocShareBtn.onclick = async () => {
-          const txt = `${b.nom || ""}\n${b.lieu || ""}\n${b.date || ""}`;
-          if (navigator.share) {
-            try {
-              await navigator.share({ title: b.nom || "Événement", text: txt });
-            } catch (e) {}
-          } else {
-            try {
-              await navigator.clipboard.writeText(txt);
-              alert("Infos copiées dans le presse-papier.");
-            } catch (e) {
-              alert(txt);
+        if (brocantePopupContent) {
+          brocantePopupContent.innerHTML = `
+            <h3 class="broc-title">${b.nom || ""}</h3>
+            <p class="broc-sub">${b.lieu || ""}</p>
+            ${b.date ? `<p class="broc-date">${b.date}</p>` : ""}
+            ${b.description ? `<p class="broc-desc">${b.description}</p>` : ""}
+            ${
+              b.tags && b.tags.length
+                ? `<div class="broc-tags">${b.tags
+                    .map((t) => `<span class="broc-tag">${t}</span>`)
+                    .join("")}</div>`
+                : ""
             }
-          }
-        };
+          `;
+        }
+
+        if (brocLikeBtn) {
+          brocLikeBtn.classList.remove("active");
+          brocLikeBtn.textContent = "♡";
+          brocLikeBtn.onclick = () => {
+            const active = brocLikeBtn.classList.toggle("active");
+            brocLikeBtn.textContent = active ? "♥" : "♡";
+          };
+        }
+
+        if (brocGoBtn) {
+          brocGoBtn.onclick = () => {
+            if (b.coords && b.coords.length === 2) {
+              const [lat, lng] = b.coords;
+              window.open(
+                `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`,
+                "_blank"
+              );
+            }
+          };
+        }
+
+        if (brocShareBtn) {
+          brocShareBtn.onclick = async () => {
+            const txt = `${b.nom || ""}\n${b.lieu || ""}\n${b.date || ""}`;
+            if (navigator.share) {
+              try {
+                await navigator.share({ title: b.nom || "Événement", text: txt });
+              } catch (e) {}
+            } else {
+              try {
+                await navigator.clipboard.writeText(txt);
+                alert("Infos copiées dans le presse-papier.");
+              } catch (e) {
+                alert(txt);
+              }
+            }
+          };
+        }
 
         openBrocSheet();
       });
@@ -208,62 +198,113 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ============================
-     TAGS CLIQUABLES (RECHERCHE)
+     AMIS (avatars)
+     ============================ */
+  let marqueursAmis = [];
+
+  const friends = [
+    { name: "Ami 1", coords: [48.869, 2.416], photo: "images/pp1.png" },
+    { name: "Ami 2", coords: [48.858, 2.312], photo: "images/pp2.png" },
+    { name: "Ami 3", coords: [48.846, 2.365], photo: "images/pp3.png" },
+    { name: "Ami 4", coords: [48.878, 2.355], photo: "images/pp4.png" },
+  ];
+
+  function clearFriendsMarkers() {
+    marqueursAmis.forEach((m) => map.removeLayer(m));
+    marqueursAmis = [];
+  }
+
+  function createFriendDivIcon(photoUrl) {
+    return L.divIcon({
+      className: "friend-div-icon",
+      html: `
+        <div class="friend-marker">
+          <div class="friend-avatar">
+            <img src="${photoUrl}" alt="">
+          </div>
+          <div class="friend-dot"></div>
+        </div>
+      `,
+      iconSize: [64, 76],
+      iconAnchor: [32, 76],
+    });
+  }
+
+  function afficherAmis() {
+    clearFriendsMarkers();
+    closeBrocSheet();
+
+    friends.forEach((f) => {
+      const marker = L.marker(f.coords, { icon: createFriendDivIcon(f.photo) }).addTo(map);
+      marqueursAmis.push(marker);
+    });
+  }
+
+  /* ============================
+     SWITCH BUTTON
+     ============================ */
+  function setMode(nextMode) {
+    modeAffichage = nextMode;
+
+    if (modeAffichage === "brocantes") {
+      clearFriendsMarkers();
+      if (switchMapIcon) switchMapIcon.src = SWITCH_ICON_BROC_TO_AMIS;
+      afficherBrocantesFiltres();
+    } else {
+      clearBrocantesMarkers();
+      if (switchMapIcon) switchMapIcon.src = SWITCH_ICON_AMIS_TO_BROC;
+      afficherAmis();
+    }
+  }
+
+  if (switchMapBtn) {
+    switchMapBtn.addEventListener("click", () => {
+      setMode(modeAffichage === "brocantes" ? "amis" : "brocantes");
+    });
+  }
+
+  /* ============================
+     TAGS CLIQUABLES (brocantes uniquement)
      ============================ */
   document.querySelectorAll(".tag").forEach((tag) => {
     tag.addEventListener("click", () => {
+      if (modeAffichage !== "brocantes") return;
+
       const value = tag.dataset.value;
       const type = tag.dataset.type;
 
-      /* =========================
-       CATEGORIE (exclusif)
-       ========================= */
       if (type === "categorie") {
         const isActive = tag.classList.contains("active");
-
         document
           .querySelectorAll('.tag[data-type="categorie"]')
           .forEach((t) => t.classList.remove("active"));
 
         filtres.categorie = isActive ? null : value;
-
         if (!isActive) tag.classList.add("active");
       }
 
-      /* =========================
-       PERIODE (exclusif)
-       ========================= */
       if (type === "periode") {
         const isActive = tag.classList.contains("active");
-
         document
           .querySelectorAll('.tag[data-type="periode"]')
           .forEach((t) => t.classList.remove("active"));
 
         filtres.periode = isActive ? null : value;
-
         if (!isActive) tag.classList.add("active");
       }
 
-      /* =========================
-       TAGS LIBRES (cumulables)
-       ========================= */
       if (type === "tag") {
         tag.classList.toggle("active");
-
-        if (tag.classList.contains("active")) {
-          filtres.tags.push(value);
-        } else {
-          filtres.tags = filtres.tags.filter((t) => t !== value);
-        }
+        if (tag.classList.contains("active")) filtres.tags.push(value);
+        else filtres.tags = filtres.tags.filter((t) => t !== value);
       }
 
-      afficherMarqueursFiltres();
+      afficherBrocantesFiltres();
     });
   });
 
   /* ============================
-     GÉOLOCALISATION (UNIQUE)
+     GÉOLOCALISATION 
      ============================ */
   const btnGeoloc = document.getElementById("btn-geoloc");
   let userMarker, userCircle;
@@ -281,42 +322,46 @@ document.addEventListener("DOMContentLoaded", () => {
     iconAnchor: [16, 48],
   });
 
-  btnGeoloc.addEventListener("click", () => {
-    if (!navigator.geolocation) {
-      alert("Géolocalisation indisponible");
-      return;
-    }
+  if (btnGeoloc) {
+    btnGeoloc.addEventListener("click", () => {
+      if (!navigator.geolocation) {
+        alert("Géolocalisation indisponible");
+        return;
+      }
 
-    navigator.geolocation.getCurrentPosition((pos) => {
-      const { latitude, longitude, accuracy } = pos.coords;
+      navigator.geolocation.getCurrentPosition((pos) => {
+        const { latitude, longitude, accuracy } = pos.coords;
 
-      map.setView([latitude, longitude], 15);
+        map.setView([latitude, longitude], 15);
 
-      if (userMarker) map.removeLayer(userMarker);
-      if (userCircle) map.removeLayer(userCircle);
+        if (userMarker) map.removeLayer(userMarker);
+        if (userCircle) map.removeLayer(userCircle);
 
-      userMarker = L.marker([latitude, longitude], {
-        icon: geoIcon,
-      })
-        .addTo(map)
-        .bindPopup("Vous êtes ici")
-        .openPopup();
+        userMarker = L.marker([latitude, longitude], { icon: geoIcon })
+          .addTo(map)
+          .bindPopup("Vous êtes ici");
 
-      userCircle = L.circle([latitude, longitude], {
-        radius: accuracy,
-        color: "#225836",
-        fillOpacity: 0.2,
-      }).addTo(map);
+        userCircle = L.circle([latitude, longitude], {
+          radius: accuracy,
+          color: "#225836",
+          fillOpacity: 0.2,
+        }).addTo(map);
+      });
     });
-  });
+  }
 
   /* ============================
-     RECHERCHE EN TEMPS RÉEL
+     RECHERCHE (brocantes)
      ============================ */
   const searchInput = document.getElementById("search-city");
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      if (modeAffichage !== "brocantes") return;
+      filtres.recherche = e.target.value.toLowerCase().trim();
+      afficherBrocantesFiltres();
+    });
+  }
 
-  searchInput.addEventListener("input", (e) => {
-    filtres.recherche = e.target.value.toLowerCase().trim();
-    afficherMarqueursFiltres();
-  });
+  /* Mode initial */
+  setMode("brocantes");
 });

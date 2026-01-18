@@ -1,57 +1,79 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BrocMap - Post</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/flux.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrocMap - Post</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/flux.css" />
+  </head>
 
-<body class="post-page">
-  <div class="messages">
-      <a href="./flux.html"><img src="./images/fleche_retour.png" alt="" /></a>
-  </div>
-
-  <main class="post-content">
-    <section class="post-profile">
-      <div class="avatar" id="postAvatar"></div>
-      <div class="profile-meta">
-        <div class="profile-name" id="postName">Paul</div>
-        <div class="profile-handle" id="postHandle">@Paul23</div>
+  <body>
+    <main class="post-page">
+      <div class="messages">
+        <a href="./flux.html"
+          ><img src="./images/fleche_retour.png" alt=""
+        /></a>
       </div>
-      <button class="add-btn" type="button" aria-label="Ajouter">+</button>
-    </section>
 
-    <p class="post-caption" id="postCaption">Pour les amateurs de confort et de voiture ;)</p>
+      <section class="post-content">
+        <div class="post-profile">
+          <div class="avatar" id="postAvatar" aria-hidden="true"></div>
 
-    <section class="post-media">
-      <img id="postImage" alt="Publication" />
-      <button class="post-like" id="postLikeBtn" type="button" aria-label="Favori">♡</button>
-      <button class="post-comment" id="postCommentBtn" type="button" aria-label="Commentaires">💬</button>
-    </section>
+          <div class="profile-meta">
+            <div class="profile-name" id="postName">Utilisateur</div>
+            <div class="profile-handle" id="postHandle">@user</div>
+          </div>
 
-    <h3 class="stickers-title">Stickers associés</h3>
-    <div class="stickers-row">
-      <div class="sticker"></div>
-    </div>
-  </main>
+          <button class="add-btn" type="button" aria-label="Ajouter">+</button>
+        </div>
 
-  <!-- Bottom sheet commentaires -->
-  <div class="cmt-overlay" id="cmtOverlay"></div>
+        <p class="post-caption" id="postCaption"></p>
 
-  <section class="cmt-sheet" id="cmtSheet" aria-hidden="true">
-    <div class="cmt-handle" aria-hidden="true"></div>
-    <h2 class="cmt-title">Commentaires</h2>
+        <div class="post-media">
+          <img id="postImage" alt="" />
+          <button
+            class="post-like"
+            id="postLikeBtn"
+            type="button"
+            aria-label="J'aime"
+          >
+            ♡
+          </button>
+          <button
+            class="post-comment"
+            id="postCommentBtn"
+            type="button"
+            aria-label="Commentaires"
+          >
+            💬
+          </button>
+        </div>
 
-    <div class="cmt-list" id="cmtList"></div>
+        <h3 class="stickers-title">Stickers associés</h3>
+        <div class="stickers-row" id="stickersRow"></div>
+      </section>
 
-    <div class="cmt-input-zone">
-      <input id="cmtInput" type="text" placeholder="Écrire un commentaire..." />
-      <button id="cmtSendBtn" type="button">Envoyer</button>
-    </div>
-  </section>
+      <!-- OVERLAY + SHEET COMMENTAIRES -->
+      <div class="cmt-overlay" id="cmtOverlay"></div>
 
-  <script src="js/post.js"></script>
-</body>
+      <section class="cmt-sheet" id="cmtSheet" aria-hidden="true">
+        <div class="cmt-handle" aria-hidden="true"></div>
+        <h3 class="cmt-title">Commentaires</h3>
+
+        <div class="cmt-list" id="cmtList"></div>
+
+        <div class="cmt-input-zone">
+          <input
+            id="cmtInput"
+            type="text"
+            placeholder="Écrire un commentaire"
+          />
+          <button id="cmtSendBtn" type="button">Envoyer</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/post.js"></script>
+  </body>
 </html>

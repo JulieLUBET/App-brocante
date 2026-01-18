@@ -8,10 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const dots = document.querySelectorAll(".dot");
   const replayBtn = document.querySelector(".onboarding-replay");
 
+  // Sécurité
   if (!stepsContainer || steps.length === 0) return;
 
   let currentStep = 0;
 
+  // -----------------------------
+  // Helpers Onboarding
+  // -----------------------------
   function setReplayVisible(isVisible) {
     if (!replayBtn) return;
     replayBtn.style.display = isVisible ? "flex" : "none";
@@ -49,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (onboardingContainer) onboardingContainer.classList.remove("active");
     if (onboardingOverlay) onboardingOverlay.classList.remove("active");
 
-    // Cache le bouton pendant l'onboarding
+    // cache bouton replay pendant onboarding
     setReplayVisible(false);
 
     currentStep = 0;
@@ -61,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (onboardingContainer) onboardingContainer.classList.add("active");
     if (onboardingOverlay) onboardingOverlay.classList.add("active");
 
-    // Affiche le bouton sur le login
+    // affiche bouton replay sur login
     setReplayVisible(true);
   }
 
@@ -73,9 +77,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // INIT: onboarding visible direct + page 1
+  // -----------------------------
+  // Init
+  // -----------------------------
   openOnboarding();
-
   window.addEventListener("resize", resizeSteps);
 
   // Bouton relance onboarding (visible uniquement sur login)
@@ -89,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Tap n'importe où sur l'onboarding = suivant
   if (onboardingContainer) {
     onboardingContainer.addEventListener("click", (e) => {
-      // clique sur dot => pas next
+      // si clique sur un dot => on ne fait pas next
       if (e.target && e.target.classList && e.target.classList.contains("dot")) return;
       next();
     });
@@ -150,4 +155,27 @@ document.addEventListener("DOMContentLoaded", () => {
       goToStep(currentStep, true);
     }
   });
+
+  // =========================================================
+  // ✅ PARTIE 2 : afficher le popup localisation uniquement
+  //     quand on quitte index.html -> map.html via "Se connecter"
+  // =========================================================
+  const loginForm = document.querySelector(".login-section .form");
+  const loginSubmitBtn = loginForm
+    ? loginForm.querySelector('button[type="submit"]')
+    : null;
+
+  // Au clic sur le bouton (très fiable)
+  if (loginSubmitBtn) {
+    loginSubmitBtn.addEventListener("click", () => {
+      sessionStorage.setItem("show_loc_popup", "1");
+    });
+  }
+
+  // Au submit (sécurité)
+  if (loginForm) {
+    loginForm.addEventListener("submit", () => {
+      sessionStorage.setItem("show_loc_popup", "1");
+    });
+  }
 });
