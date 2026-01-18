@@ -266,9 +266,6 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ============================
      TAGS CLIQUABLES (brocantes uniquement)
      ============================ */
-
-  // UI : remonter les tags actifs au début de leur ligne (sans casser la logique
-  // de filtres). On mémorise l'ordre initial pour garder un tri stable.
   function initTagOrders() {
     document.querySelectorAll(".tags").forEach((group) => {
       Array.from(group.querySelectorAll(".tag")).forEach((el, idx) => {
