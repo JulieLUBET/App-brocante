@@ -11,7 +11,7 @@ Le projet est pensé pour être ouvert dans un navigateur (format mobile).
 ## Liens
 - **Figma (prototype, components, design system, wireframes)** : [lien](https://www.figma.com/design/M1pyMKRS4EGjv9De36gdmd/Tr%C5%8Dve---Project?node-id=90-131&t=Wk1eS1qAnvduhG9d-1)
 - **Dossier du projet** : [lien pas encore]()
-- **Présentation** : [lien](https://www.figma.com/slides/MwMuCk0kAWRLPNET6nK3cM/Untitled?node-id=50-287&t=Ab8wkcCs7Wh6D6gk-1)
+- **Présentation** : [lien](https://www.figma.com/slides/MwMuCk0kAWRLPNET6nK3cM/Tr%C5%8Dve---Dossier?node-id=71-4684&t=MK9C1jtBZGeH50xX-0)
 
 ---
 
