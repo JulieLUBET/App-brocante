@@ -16,6 +16,7 @@ body {
   flex-direction: column;
   gap: 20px;
   margin-top: 50px;
+  margin-bottom: 150px;
   padding: 16px;
   overflow-y: auto;
   max-height: calc(100vh - 60px);
@@ -107,6 +108,7 @@ body {
   flex-direction: column;
   gap: 15px;
   padding: 16px;
+  margin-bottom: 200px;
 }
 
 .conversation p {
