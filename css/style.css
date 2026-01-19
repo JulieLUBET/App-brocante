@@ -1,3 +1,43 @@
+/* =========================
+   FONTS (TRÔVE)
+   dossier: /font/static/
+   ========================= */
+
+@font-face {
+  font-family: "Tilt Warp";
+  src: url("../font/static/TiltWarp-Regular-VariableFont_XROT,YROT.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inclusive Sans - Regular (400) */
+@font-face {
+  font-family: "Inclusive Sans";
+  src: url("../font/static/InclusiveSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inclusive Sans - SemiBold (600) */
+@font-face {
+  font-family: "Inclusive Sans";
+  src: url("../font/static/InclusiveSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inclusive Sans - Bold (700) */
+@font-face {
+  font-family: "Inclusive Sans";
+  src: url("../font/static/InclusiveSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ======================================
    VARIABLES DE COULEUR
    ====================================== */
@@ -18,6 +58,9 @@
   --color-btn-3-bg: #fbabbe;
 
   --color-shadow: rgba(0, 0, 0, 0.1);
+
+  --font-title: "Tilt Warp", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-text: "Inclusive Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 /* ======================================
@@ -44,13 +87,13 @@ html {
 
 body {
   min-width: 100vw;
-  font-family: "Futuru", sans-serif;
   font-size: 20px;
   color: var(--color-text);
   background-color: var(--color-bg);
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  font-family: var(--font-text);
 }
 
 /* TITRES */
@@ -58,29 +101,26 @@ h1,
 h2,
 h3 {
   margin-bottom: 0.5rem;
+  font-family: var(--font-title);
 }
 
 h1 {
-  font-family: "Superbusy Activity", sans-serif;
   font-size: 32px;
   color: var(--color-title);
 }
 
 h2 {
-  font-family: "Superbusy Activity", sans-serif;
   font-size: 24px;
   color: var(--color-title);
 }
 
 h3 {
-  font-family: "Superbusy Activity", sans-serif;
   font-size: 20px;
   color: var(--color-title);
 }
 
 /* PARAGRAPHES */
 p {
-  font-family: "Futuru", sans-serif;
   font-size: 15px;
   color: var(--color-text);
   line-height: 1.6;
@@ -118,10 +158,10 @@ a:hover {
   border: none;
   border-radius: 20px;
   font-weight: bold;
-  font-family: "Futuru", sans-serif;
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: center;
+  font-family: var(--font-title);
 }
 
 .btn-primary {
