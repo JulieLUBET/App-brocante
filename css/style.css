@@ -44,7 +44,6 @@ html {
 
 body {
   min-width: 100vw;
-  font-family: "Futuru", sans-serif;
   font-size: 20px;
   color: var(--color-text);
   background-color: var(--color-bg);
@@ -61,26 +60,22 @@ h3 {
 }
 
 h1 {
-  font-family: "Superbusy Activity", sans-serif;
   font-size: 32px;
   color: var(--color-title);
 }
 
 h2 {
-  font-family: "Superbusy Activity", sans-serif;
   font-size: 24px;
   color: var(--color-title);
 }
 
 h3 {
-  font-family: "Superbusy Activity", sans-serif;
   font-size: 20px;
   color: var(--color-title);
 }
 
 /* PARAGRAPHES */
 p {
-  font-family: "Futuru", sans-serif;
   font-size: 15px;
   color: var(--color-text);
   line-height: 1.6;
@@ -118,7 +113,6 @@ a:hover {
   border: none;
   border-radius: 20px;
   font-weight: bold;
-  font-family: "Futuru", sans-serif;
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: center;
