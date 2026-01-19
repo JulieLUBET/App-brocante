@@ -170,17 +170,8 @@ a:hover {
 }
 
 .btn-secondary {
-  background-color: var(--color-btn-secondary-bg);
-  color: var(--color-btn-secondary-text);
-}
-
-/* ======================================
-   MAIN SECTION
-   ====================================== */
-.main-content {
-  flex: 1;
-  padding: 80px 1rem 60px;
-  overflow-y: auto;
+  background-color: var(--color-btn-2-bg);
+  color: var(--color-btn-2-text);
 }
 
 /* =============================
